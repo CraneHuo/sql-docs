@@ -6,37 +6,42 @@ items:
 - name: Previous versions 2005-2014
   href: sql-server/previous-versions-sql-server.md
 - name: Overview
+  expanded: true
   items:
-  - name: What's New
+  - name: What is SQL Server?
+    href: sql-server/what-is-sql-server.md
+  - name: Connect to the Database Engine
+    href: sql-server/connect-to-database-engine.md
+  - name: What's new?
     items:
     - name: SQL Server 2022
-      href: sql-server/what-s-new-in-sql-server-2022.md
+      href: sql-server/what-s-new-in-sql-server-2022.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2019
-      href: sql-server/what-s-new-in-sql-server-2019.md
+      href: sql-server/what-s-new-in-sql-server-2019.md?view=sql-server-ver15&preserve-view=true
     - name: SQL Server 2017
-      href: sql-server/what-s-new-in-sql-server-2017.md
+      href: sql-server/what-s-new-in-sql-server-2017.md?view=sql-server-2017&preserve-view=true
     - name: SQL Server 2016
-      href: sql-server/what-s-new-in-sql-server-2016.md
-  - name: Editions & Features
+      href: sql-server/what-s-new-in-sql-server-2016.md?view=sql-server-2016&preserve-view=true
+  - name: Editions and features
     items:
     - name: SQL Server 2022
-      href: sql-server/editions-and-components-of-sql-server-2022.md
+      href: sql-server/editions-and-components-of-sql-server-2022.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2019
-      href: sql-server/editions-and-components-of-sql-server-2019.md
+      href: sql-server/editions-and-components-of-sql-server-2019.md?view=sql-server-ver15&preserve-view=true
     - name: SQL Server 2017
-      href: sql-server/editions-and-components-of-sql-server-2017.md
+      href: sql-server/editions-and-components-of-sql-server-2017.md?view=sql-server-2017&preserve-view=true
     - name: SQL Server 2016
-      href: sql-server/editions-and-components-of-sql-server-2016.md
-  - name: Release Notes
+      href: sql-server/editions-and-components-of-sql-server-2016.md?view=sql-server-2016&preserve-view=true
+  - name: Release notes
     items:
     - name: SQL Server 2022
-      href: sql-server/sql-server-2022-release-notes.md
+      href: sql-server/sql-server-2022-release-notes.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2019
-      href: sql-server/sql-server-2019-release-notes.md
+      href: sql-server/sql-server-2019-release-notes.md?view=sql-server-ver15&preserve-view=true
     - name: SQL Server 2017
-      href: sql-server/sql-server-2017-release-notes.md
+      href: sql-server/sql-server-2017-release-notes.md?view=sql-server-2017&preserve-view=true
     - name: SQL Server 2016
-      href: sql-server/sql-server-2016-release-notes.md
+      href: sql-server/sql-server-2016-release-notes.md?view=sql-server-2016&preserve-view=true
     - name: SQL Server 2014
       href: sql-server/sql-server-2014-release-notes.md
     - name: SQL Server 2012 Service Pack release notes
@@ -63,6 +68,8 @@ items:
         href: relational-databases/backup-restore/quickstart-backup-restore-database.md
       - name: To Azure Blob Storage 
         href: relational-databases/tutorial-sql-server-backup-and-restore-to-azure-blob-storage-service.md
+      - name: To S3-Compatible Object Storage
+        href: relational-databases/tutorial-sql-server-backup-and-restore-to-s3.md
     - name: How-to
       items:
       - name: Backup to Azure
@@ -389,8 +396,6 @@ items:
         href: database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md
       - name: Availability modes
         href: database-engine/availability-groups/windows/availability-modes-always-on-availability-groups.md
-      - name: Technology & capabilities
-        href: database-engine/availability-groups/windows/always-on-availability-groups-sql-server.md
       - name: Prerequisites, restrictions, & recommendations
         href: database-engine/availability-groups/windows/prereqs-restrictions-recommendations-always-on-availability.md
       - name: Interoperability
@@ -1175,20 +1180,20 @@ items:
       href: relational-databases/service-broker/configure-dialog-security-for-event-notifications.md
     - name: Get Information
       href: relational-databases/service-broker/get-information-about-event-notifications.md
-  - name: Filestream, Filetable & BLOB
+  - name: FILESTREAM, FileTable & BLOB
     href: relational-databases/blob/binary-large-object-blob-data-sql-server.md
     items:
     - name: Overview
       items:
-      - name: Filestream
+      - name: FILESTREAM
         href: relational-databases/blob/filestream-sql-server.md
-      - name: Filetable
+      - name: FileTable
         href: relational-databases/blob/filetables-sql-server.md
       - name: Compare Options for Storing Blobs
         href: relational-databases/blob/compare-options-for-storing-blobs-sql-server.md
       - name: Remote Blob Store (RBS)
         href: relational-databases/blob/remote-blob-store-rbs-sql-server.md
-    - name: Filestream
+    - name: FILESTREAM
       items:
       - name: Enable & Configure
         href: relational-databases/blob/enable-and-configure-filestream.md
@@ -1239,59 +1244,63 @@ items:
       - name: DDL, Functions, Stored Procedures, & Views
         href: relational-databases/blob/filetable-ddl-functions-stored-procedures-and-views.md
   - name: Indexes
-    href: relational-databases/indexes/indexes.md
     items:
-    - name: Heaps (Tables without Clustered Indexes)
-      href: relational-databases/indexes/heaps-tables-without-clustered-indexes.md
-    - name: Clustered & Nonclustered Indexes
-      href: relational-databases/indexes/clustered-and-nonclustered-indexes-described.md
-      items:
-      - name: Create
+      - name: Overview
+        href: relational-databases/indexes/indexes.md
+      - name: Heaps (Tables without Clustered Indexes)
+        href: relational-databases/indexes/heaps-tables-without-clustered-indexes.md
+      - name: Clustered & Nonclustered Indexes
         items:
-        - name: Clustered Indexes
-          href: relational-databases/indexes/create-clustered-indexes.md
-        - name: Nonclustered Indexes
-          href: relational-databases/indexes/create-nonclustered-indexes.md
-        - name: Unique Indexes
-          href: relational-databases/indexes/create-unique-indexes.md
-        - name: Filtered Indexes
-          href: relational-databases/indexes/create-filtered-indexes.md
-        - name: With Included Columns
-          href: relational-databases/indexes/create-indexes-with-included-columns.md
-      - name: Delete
-        href: relational-databases/indexes/delete-an-index.md
-      - name: Modify
-        href: relational-databases/indexes/modify-an-index.md
-      - name: Move to a different filegroup
-        href: relational-databases/indexes/move-an-existing-index-to-a-different-filegroup.md
-      - name: Computed Columns
-        href: relational-databases/indexes/indexes-on-computed-columns.md
-      - name: SORT_IN_TEMPDB
-        href: relational-databases/indexes/sort-in-tempdb-option-for-indexes.md
-      - name: Disable
-        href: relational-databases/indexes/disable-indexes-and-constraints.md
-      - name: Enable
-        href: relational-databases/indexes/enable-indexes-and-constraints.md
-      - name: Rename
-        href: relational-databases/indexes/rename-indexes.md
-      - name: Set Options
-        href: relational-databases/indexes/set-index-options.md
-      - name: Tune nonclustered indexes with missing index suggestions
-        href: relational-databases/indexes/tune-nonclustered-missing-index-suggestions.md
-      - name: Disk Space Index DDL Operations
-        href: relational-databases/indexes/disk-space-requirements-for-index-ddl-operations.md
+        - name: Described
+          href: relational-databases/indexes/clustered-and-nonclustered-indexes-described.md
+        - name: Create
+          items:
+          - name: Clustered Indexes
+            href: relational-databases/indexes/create-clustered-indexes.md
+          - name: Nonclustered Indexes
+            href: relational-databases/indexes/create-nonclustered-indexes.md
+          - name: Unique Indexes
+            href: relational-databases/indexes/create-unique-indexes.md
+          - name: Filtered Indexes
+            href: relational-databases/indexes/create-filtered-indexes.md
+          - name: With Included Columns
+            href: relational-databases/indexes/create-indexes-with-included-columns.md
+        - name: Delete
+          href: relational-databases/indexes/delete-an-index.md
+        - name: Modify
+          href: relational-databases/indexes/modify-an-index.md
+        - name: Move to a different filegroup
+          href: relational-databases/indexes/move-an-existing-index-to-a-different-filegroup.md
+        - name: Computed Columns
+          href: relational-databases/indexes/indexes-on-computed-columns.md
+        - name: SORT_IN_TEMPDB
+          href: relational-databases/indexes/sort-in-tempdb-option-for-indexes.md
+        - name: Disable
+          href: relational-databases/indexes/disable-indexes-and-constraints.md
+        - name: Enable
+          href: relational-databases/indexes/enable-indexes-and-constraints.md
+        - name: Rename
+          href: relational-databases/indexes/rename-indexes.md
+        - name: Set Options
+          href: relational-databases/indexes/set-index-options.md
+        - name: Tune nonclustered indexes with missing index suggestions
+          href: relational-databases/indexes/tune-nonclustered-missing-index-suggestions.md
+        - name: Disk space index DDL operations
+          items:
+          - name: Disk space requirements
+            href: relational-databases/indexes/disk-space-requirements-for-index-ddl-operations.md
+          - name: Transaction log disk space
+            href: relational-databases/indexes/transaction-log-disk-space-for-index-operations.md
+          - name: Disk space example
+            href: relational-databases/indexes/index-disk-space-example.md
+        - name: Reorganize & rebuild
+          href: relational-databases/indexes/reorganize-and-rebuild-indexes.md
+        - name: Specify fill factor
+          href: relational-databases/indexes/specify-fill-factor-for-an-index.md
+      - name: Perform online operations
         items:
-        - name: Transaction Log Disk Space
-          href: relational-databases/indexes/transaction-log-disk-space-for-index-operations.md
-        - name: Disk Space Example
-          href: relational-databases/indexes/index-disk-space-example.md
-      - name: Reorganize & Rebuild
-        href: relational-databases/indexes/reorganize-and-rebuild-indexes.md
-      - name: Specify Fill Factor
-        href: relational-databases/indexes/specify-fill-factor-for-an-index.md
-      - name: Perform Online Operations
-        href: relational-databases/indexes/perform-index-operations-online.md
-        items:
+        - name: Overview
+          href: relational-databases/indexes/perform-index-operations-online.md
         - name: How it works
           href: relational-databases/indexes/how-online-index-operations-work.md
         - name: Guidelines
@@ -1300,23 +1309,24 @@ items:
         href: relational-databases/indexes/configure-parallel-index-operations.md
       - name: Index Properties F1 Help
         href: relational-databases/indexes/index-properties-f1-help.md
-    - name: Columnstore indexes
-      href: relational-databases/indexes/columnstore-indexes-overview.md
-      items:
-      - name: What's new
-        href: relational-databases/indexes/columnstore-indexes-what-s-new.md
-      - name: Design Guidance
-        href: relational-databases/indexes/columnstore-indexes-design-guidance.md
-      - name: Data loading Guidance
-        href: relational-databases/indexes/columnstore-indexes-data-loading-guidance.md
-      - name: Query performance
-        href: relational-databases/indexes/columnstore-indexes-query-performance.md
-      - name: Real-time operational analytics
-        href: relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics.md
-      - name: Data warehouse
-        href: relational-databases/indexes/columnstore-indexes-data-warehouse.md
-      - name: Defragment
-        href: relational-databases/indexes/reorganize-and-rebuild-indexes.md
+      - name: Columnstore indexes
+        items:
+        - name: Overview
+          href: relational-databases/indexes/columnstore-indexes-overview.md
+        - name: What's new
+          href: relational-databases/indexes/columnstore-indexes-what-s-new.md
+        - name: Design Guidance
+          href: relational-databases/indexes/columnstore-indexes-design-guidance.md
+        - name: Data loading Guidance
+          href: relational-databases/indexes/columnstore-indexes-data-loading-guidance.md
+        - name: Query performance
+          href: relational-databases/indexes/columnstore-indexes-query-performance.md
+        - name: Real-time operational analytics
+          href: relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics.md
+        - name: Data warehouse
+          href: relational-databases/indexes/columnstore-indexes-data-warehouse.md
+        - name: Defragment
+          href: relational-databases/indexes/reorganize-and-rebuild-indexes.md
   - name: SQL Graph
     href: relational-databases/graphs/sql-graph-overview.md
     items:
@@ -1869,17 +1879,19 @@ items:
   - name: Track changes
     href: relational-databases/track-changes/track-data-changes-sql-server.md
     items:
-    - name: Change data capture
+    - name: Change data capture (CDC)
       href: relational-databases/track-changes/about-change-data-capture-sql-server.md
       items:
       - name: Enable & disable
         href: relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server.md
       - name: Administer & monitor
         href: relational-databases/track-changes/administer-and-monitor-change-data-capture-sql-server.md
-      - name: Work with
+      - name: Work with change data capture
         href: relational-databases/track-changes/work-with-change-data-sql-server.md
       - name: Interoperability
         href: relational-databases/track-changes/change-data-capture-and-other-sql-server-features.md
+      - name: Known issues and errors
+        href: relational-databases/track-changes/known-issues-and-errors-change-data-capture.md
     - name: Change tracking
       href: relational-databases/track-changes/about-change-tracking-sql-server.md
       items:
@@ -3010,7 +3022,7 @@ items:
         href: relational-databases/native-client-ole-db-how-to/results/execute-stored-procedure-with-rpc-and-process-output.md
       - name: Fetch rows from a result set
         href: relational-databases/native-client-ole-db-how-to/results/fetch-rows-from-a-result-set-ole-db.md
-      - name: Filestream & OLE DB
+      - name: FILESTREAM & OLE DB
         href: relational-databases/native-client-ole-db-how-to/filestream/filestream-and-ole-db.md
       - name: Read a FILESTREAM column to file using IBCPSession
         href: relational-databases/native-client-ole-db-how-to/filestream/read-a-filestream-column-to-file-using-ibcpsession-ole-db.md
@@ -4226,20 +4238,21 @@ items:
           href: relational-databases/wmi-provider-configuration-classes/clientsettings-class-instancename-property.md
         - name: SetDefaults Method
           href: relational-databases/wmi-provider-configuration-classes/clientsettings-class-setdefaults-method.md
-    - name: Server Events Concepts
-      href: relational-databases/wmi-provider-server-events/wmi-provider-for-server-events-concepts.md
+    - name: Server Events concepts
       items:
-      - name: "Sample: Creating a SQL Server Agent Alert with the WMI Provider"
+      - name: Overview
+        href: relational-databases/wmi-provider-server-events/wmi-provider-for-server-events-concepts.md
+      - name: "Sample: Create a SQL Server Agent Alert with the WMI Provider"
         href: relational-databases/wmi-provider-server-events/sample-creating-a-sql-server-agent-alert-with-the-wmi-provider.md
-      - name: "Sample: Using the WMI Event Provider with the .NET Framework"
+      - name: "Sample: Use the WMI Event Provider with the .NET Framework"
         href: relational-databases/wmi-provider-server-events/sample-using-the-wmi-event-provider-with-the-net-framework.md
-      - name: Understanding Server Events
+      - name: Understand Server Events
         href: relational-databases/wmi-provider-server-events/understanding-the-wmi-provider-for-server-events.md
-      - name: Using WQL Server Events
+      - name: Use WQL Server Events
         href: relational-databases/wmi-provider-server-events/using-wql-with-the-wmi-provider-for-server-events.md
-      - name: Server Events Classes & Properties
+      - name: Server Events classes and properties
         href: relational-databases/wmi-provider-server-events/wmi-provider-for-server-events-classes-and-properties.md
-      - name: Working with Server Events
+      - name: Work with Server Events
         href: relational-databases/wmi-provider-server-events/working-with-the-wmi-provider-for-server-events.md
 - name: Internals & Architecture
   href: relational-databases/sql-server-guides.md
@@ -4414,29 +4427,32 @@ items:
     - name: Upgrade edition
       href: database-engine/install-windows/upgrade-to-a-different-edition-of-sql-server-setup.md
     - name: Upgrade Database Engine
-      href: database-engine/install-windows/upgrade-database-engine.md
       items:
-      - name: Choose a Method
+      - name: Overview
+        href: database-engine/install-windows/upgrade-database-engine.md
+      - name: Choose a method
         href: database-engine/install-windows/choose-a-database-engine-upgrade-method.md
       - name: Query Tuning Assistant
         href: relational-databases/performance/upgrade-dbcompat-using-qta.md
-      - name: Plan & Test the Upgrade Plan
+      - name: Plan & test the upgrade plan
         href: database-engine/install-windows/plan-and-test-the-database-engine-upgrade-plan.md
-      - name: Complete the Upgrade
+      - name: Complete the upgrade
         href: database-engine/install-windows/complete-the-database-engine-upgrade.md
-      - name: Change the Database Compatibility Mode & use the Query Store
+      - name: Change the database compatibility mode & use the Query Store
         href: database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store.md
-      - name: Change the Database Compatibility Mode with Query Tuning Assistant
+      - name: Change the database compatibility mode with Query Tuning Assistant
         href: relational-databases/performance/upgrade-dbcompat-using-qta.md
       - name: Latest updates for SQL Server
         href: /troubleshoot/sql/releases/download-and-install-latest-updates?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
   - name: End of support
     items:
-    - name: Overview
+    - name: End of support options
       href: sql-server/end-of-support/sql-server-end-of-support-overview.md
       displayName: end of support, end of life
-    - name: Extended security updates
+    - name: Extended security updates (ESUs)
       href: sql-server/end-of-support/sql-server-extended-security-updates.md
+    - name: ESU frequently asked questions
+      href: sql-server/end-of-support/extended-security-updates-frequently-asked-questions.md
   - name: Configuration
     href: database-engine/configure-windows/database-engine-instances-sql-server.md
     items:
@@ -4601,7 +4617,7 @@ items:
         href: database-engine/configure-windows/configure-the-query-wait-server-configuration-option.md
       - name: Configure the recovery interval
         href: database-engine/configure-windows/configure-the-recovery-interval-server-configuration-option.md
-      - name: Configure the remote access
+      - name: Configure remote access
         href: database-engine/configure-windows/configure-the-remote-access-server-configuration-option.md
       - name: remote admin connections
         href: database-engine/configure-windows/remote-admin-connections-server-configuration-option.md
@@ -4978,6 +4994,8 @@ items:
       items:
       - name: Configure replication
         items:
+        - name: With Azure AD authentication
+          href: relational-databases/replication/configure-replication-with-azure-ad-authentication.md
         - name: Distribution
           href: relational-databases/replication/configure-distribution.md
           items:
@@ -5928,22 +5946,22 @@ items:
         href: relational-databases/import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md
       - name: Import Native & Character Format Data from Earlier Versions of SQL Server
         href: relational-databases/import-export/import-native-and-character-format-data-from-earlier-versions-of-sql-server.md
-    - name: Format Files for Importing or Exporting Data
+    - name: Format files for importing or exporting data
       href: relational-databases/import-export/format-files-for-importing-or-exporting-data-sql-server.md
       items:
-      - name: Non-XML Format Files
+      - name: Non-XML format files
         href: relational-databases/import-export/non-xml-format-files-sql-server.md
-      - name: XML Format Files
+      - name: XML format files
         href: relational-databases/import-export/xml-format-files-sql-server.md
-      - name: Create a Format File
+      - name: Create a format file with bcp
         href: relational-databases/import-export/create-a-format-file-sql-server.md
-      - name: Use a Format File to Bulk Import Data
+      - name: Use a format file to bulk import data
         href: relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md
-      - name: Use a Format File to Skip a Table Column
+      - name: Use a format file to skip a table column
         href: relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md
-      - name: Use a Format File to Skip a Data Field
+      - name: Use a format file to skip a data field
         href: relational-databases/import-export/use-a-format-file-to-skip-a-data-field-sql-server.md
-      - name: Use a Format File to Map Table Columns to Data-File Fields
+      - name: Use a format file to map table columns to data-file fields
         href: relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md
   - name: Stretch database
     href: sql-server/stretch-database/stretch-database.md
@@ -6164,11 +6182,11 @@ items:
       items:
       - name: Overview
         href: relational-databases/data-compression/data-compression.md
-      - name: Row Compression
+      - name: Row compression
         href: relational-databases/data-compression/row-compression-implementation.md
-      - name: Page Compression
+      - name: Page compression
         href: relational-databases/data-compression/page-compression-implementation.md
-      - name: Unicode Compression
+      - name: Unicode compression
         href: relational-databases/data-compression/unicode-compression-implementation.md
       - name: Enable
         href: relational-databases/data-compression/enable-compression-on-a-table-or-index.md
@@ -6767,8 +6785,9 @@ items:
         - name: Tuning Database using workload from Query Store
           href: relational-databases/performance/tuning-database-using-workload-from-query-store.md
     - name: Execution plans
-      href: relational-databases/performance/execution-plans.md
       items:
+      - name: Overview
+        href: relational-databases/performance/execution-plans.md
       - name: Concepts
         items:
         - name: Query Profiling Infrastructure
@@ -6810,6 +6829,11 @@ items:
             href: relational-databases/in-memory-oltp/requirements-for-using-memory-optimized-tables.md
           - name: Assess benefits
             href: relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp.md
+          - name: Hardware for In-Memory
+            displayName: Hardware considerations for In-Memory OLTP in SQL Server
+            href: relational-databases/in-memory-oltp/blog-hardware-in-memory-oltp.md
+          - name: Compare storage
+            href: relational-databases/in-memory-oltp/comparing-disk-based-table-storage-to-memory-optimized-table-storage.md
           - name: Evaluate with PowerShell
             href: relational-databases/in-memory-oltp/powershell-cmdlet-for-migration-evaluation.md
           - name: Memory-optimization advisor
@@ -6824,8 +6848,10 @@ items:
             href: relational-databases/in-memory-oltp/configuring-storage-for-memory-optimized-tables.md
           - name: Migrate triggers
             href: relational-databases/in-memory-oltp/migrating-triggers.md
+          - name: In-Memory on Azure SQL Database and SQL Managed Instance
+            href: /azure/sql-database/sql-database-in-memory            
         - name: Natively compiled
-          href: relational-databases/in-memory-oltp/a-guide-to-query-processing-for-memory-optimized-tables.md
+          href: relational-databases/in-memory-oltp/natively-compiled-stored-procedures-and-execution-set-options.md
           items:
           - name: Tables and stored procs
             href: relational-databases/in-memory-oltp/native-compilation-of-tables-and-stored-procedures.md
@@ -6837,13 +6863,6 @@ items:
             href: relational-databases/in-memory-oltp/best-practices-for-calling-natively-compiled-stored-procedures.md
           - name: Interpreted access of In-Memory tables
             href: relational-databases/in-memory-oltp/accessing-memory-optimized-tables-using-interpreted-transact-sql.md
-        - name: Performance of In-Memory
-          href: relational-databases/in-memory-oltp/natively-compiled-stored-procedures-and-execution-set-options.md
-          items:
-          - name: Hardware for In-Memory
-            href: relational-databases/in-memory-oltp/blog-hardware-in-memory-oltp.md
-          - name: In-Memory on Azure SQL Database
-            href: /azure/sql-database/sql-database-in-memory
         - name: Administration of In-Memory
           href: relational-databases/in-memory-oltp/the-memory-optimized-filegroup.md
           items:
@@ -6864,8 +6883,6 @@ items:
           items:
           - name: Storage
             href: relational-databases/in-memory-oltp/creating-and-managing-storage-for-memory-optimized-objects.md
-          - name: Compare storage modes
-            href: relational-databases/in-memory-oltp/comparing-disk-based-table-storage-to-memory-optimized-table-storage.md
           - name: Durability
             href: relational-databases/in-memory-oltp/durability-for-memory-optimized-tables.md
           - name: Garbage collection
@@ -6873,6 +6890,9 @@ items:
         - name: T-SQL for In-Memory
           href: relational-databases/in-memory-oltp/transact-sql-support-for-in-memory-oltp.md
           items:
+          - name: Guide to query processing
+            displayName: Guide to Query Processing for Memory-Optimized Tables
+            href: relational-databases/in-memory-oltp/a-guide-to-query-processing-for-memory-optimized-tables.md
           - name: Supported T-SQL
             href: relational-databases/in-memory-oltp/supported-features-for-natively-compiled-t-sql-modules.md
           - name: Unsupported T-SQL
@@ -7976,8 +7996,9 @@ items:
       - name: Azure Active Directory authentication
         href: relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md
     - name: Encryption
-      href: relational-databases/security/encryption/sql-server-encryption.md
       items:
+      - name: Overview
+        href: relational-databases/security/encryption/sql-server-encryption.md
       - name: Choose an algorithm
         href: relational-databases/security/encryption/choose-an-encryption-algorithm.md
       - name: Hierarchy
@@ -8040,8 +8061,10 @@ items:
         href: relational-databases/security/ledger/ledger-limits.md?view=sql-server-ver16&preserve-view=true
     - name: Networking
       items:
-      - name: TDS 8.0 and TLS 1.3
-        href: relational-databases/security/networking/tds-8-and-tls-1-3.md
+      - name: TDS 8.0
+        href: relational-databases/security/networking/tds-8.md
+      - name: TLS 1.3
+        href: relational-databases/security/networking/tls-1-3.md       
   - name: Tutorials
     items:
     - name: Always Encrypted
@@ -8366,9 +8389,9 @@ items:
           href: tools/configuration-manager/new-alias-alias-tab.md
         - name: Properties
           href: tools/configuration-manager/alias-properties-alias-tab.md
-        - name: Creating a Valid Connection String Using Shared Memory Protocol
+        - name: Create a valid connection string using shared memory
           href: tools/configuration-manager/creating-a-valid-connection-string-using-shared-memory-protocol.md
-        - name: Creating a Valid Connection String Using TCP IP
+        - name: "Create a valid connection string using TCP/IP"
           href: tools/configuration-manager/creating-a-valid-connection-string-using-tcp-ip.md
     - name: Error logs
       href: tools/configuration-manager/monitoring-the-error-logs.md
@@ -8379,22 +8402,24 @@ items:
         href: tools/configuration-manager/viewing-the-windows-application-log.md
   - name: SQLCMD
     items:
-    - name: sqlcmd Overview
+    - name: sqlcmd overview
       href: tools/sqlcmd/sqlcmd-utility.md
-    - name: go-sqlcmd Overview
-      href: tools/sqlcmd/go-sqlcmd-utility.md
-    - name: Start the Utility
+    - name: Authenticate sqlcmd with Azure AD
+      href: tools/sqlcmd/sqlcmd-authentication.md
+    - name: Start the utility
       href: tools/sqlcmd/sqlcmd-start-utility.md
-    - name: Use the Utility
+    - name: Use the utility
       href: tools/sqlcmd/sqlcmd-use-utility.md
     - name: Connect to the Database Engine
       href: tools/sqlcmd/sqlcmd-connect-database-engine.md
-    - name: Run T-SQL Script Files
+    - name: Run T-SQL script files
       href: tools/sqlcmd/sqlcmd-run-transact-sql-script-files.md
-    - name: Use with Scripting Variables
+    - name: Use with scripting variables
       href: tools/sqlcmd/sqlcmd-use-scripting-variables.md
-    - name: Edit SQLCMD Scripts with Query Editor
+    - name: Edit SQLCMD scripts with Query Editor
       href: tools/sqlcmd/edit-sqlcmd-scripts-query-editor.md
+    - name: Create new local database in a container with sqlcmd
+      href: tools/sqlcmd/quickstart-sqlcmd-create-container.md
   - name: SSB Diagnose
     href: tools/ssbdiagnose/ssbdiagnose-utility-service-broker.md
     items:
@@ -8412,12 +8437,12 @@ items:
       href: ssdt/sql-server-data-tools.md
     - name: Download SSDT
       href: ssdt/download-sql-server-data-tools-ssdt.md
-    - name: Release notes for SSDT in VS2017
-      href: ssdt/release-notes-ssdt.md
     - name: Previous releases of SSDT & SSDT-BI
       href: ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi.md
     - name: Anonymous Usage Data
       href: ssdt/anonymous-usage-data.md
+    - name: Connect to an existing database in SSDT
+      href: ssdt/connect-to-an-existing-database-in-sql-server-data-tools.md   
     - name: Azure Active Directory support
       href: ssdt/azure-active-directory.md
     - name: Project-Oriented Offline Database Development
@@ -8594,10 +8619,10 @@ items:
         href: ssdt/dac-framework-compatibility.md
     - name: Alter DacFx Used by SSDT
       href: ssdt/alter-dacfx-used-by-ssdt.md
-    - name: SSIS Projects extension for VS2019 troubleshooting guide
-      href: ssdt/release-notes-ssdt-2019.md
-    - name: SSIS Projects extension for VS2022 troubleshooting guide
-      href: ssdt/release-notes-integration-services-2022.md
+    - name: VS2019 SSIS troubleshooting guide
+      href: ssdt/ssis-vs2019-troubleshooting-guide.md
+    - name: VS2022 SSIS troubleshooting guide
+      href: ssdt/ssis-vs2022-troubleshooting-guide.md
   - name: SQL Server Management Studio (SSMS)
     items:
     - name: Download SSMS
@@ -9274,14 +9299,14 @@ items:
           href: ssms/f1-help/connect-to-microsoft-azure-storage.md
         - name: Connect to Any SQL Server Component from SQL Server Management Studio
           href: ssms/f1-help/connect-to-any-sql-server-component-from-sql-server-management-studio.md
-        - name: Connection Properties Dialog Box
-          href: ./ssms/f1-help/connect-to-server-connection-properties-page-database-engine.md
-        - name: Connect to Server - Database Engine
-          href: ssms/f1-help/connect-to-server-database-engine.md
-        - name: Connect to Server - Properties Page - Database Engine
-          href: ssms/f1-help/connect-to-server-connection-properties-page-database-engine.md
-        - name: Connect to Server - Login - Database Engine
+        - name: Connect to Server (Login page) - Database Engine
           href: ssms/f1-help/connect-to-server-login-page-database-engine.md
+        - name: Connect to Server (Connection Properties page) - Database Engine
+          href: ssms/f1-help/connect-to-server-connection-properties-page-database-engine.md
+        - name: Connect to Server (Always Encrypted page) - Database Engine
+          href: ssms/f1-help/connect-to-server-always-encrypted-page-database-engine.md
+        - name: Connect to Server (Additional Connection Parameters page) - Database Engine
+          href: ssms/f1-help/connect-to-server-additional-connection-parameters-page-database-engine.md
         - name: Login - Connect to SSAS Server
           href: /analysis-services/instances/connect-from-client-applications-analysis-services?viewFallbackFrom=sql-server-ver15
         - name: Connect to SSAS
@@ -9855,6 +9880,8 @@ items:
         href: tools/sqlpackage/sqlpackage-script.md
     - name: SqlPackage in development pipelines
       href: tools/sqlpackage/sqlpackage-pipelines.md
+    - name: SqlPackage with data in Parquet files
+      href: tools/sqlpackage/sqlpackage-with-data-in-parquet-files.md
     - name: SqlPackage for Azure Synapse Analytics
       href: tools/sqlpackage/sqlpackage-for-azure-synapse-analytics.md
     - name: Troubleshooting SqlPackage
@@ -10038,8 +10065,9 @@ items:
     - name: "Lesson 3: Delete database objects"
       href: t-sql/lesson-3-deleting-database-objects.md
 - name: SQL Server on Linux
-  href: linux/sql-server-linux-overview.md
   items:
+  - name: What is SQL Server on Linux?
+    href: linux/sql-server-linux-overview.md
   - name: Overview
     items:
     - name: What's new?
@@ -10113,8 +10141,9 @@ items:
       - name: Set up AD Authentication
         href: linux/sql-server-linux-active-directory-authentication.md
     - name: Create failover cluster instance
-      href: linux/sql-server-linux-shared-disk-cluster-configure.md
       items:
+      - name: Overview
+        href: linux/sql-server-linux-shared-disk-cluster-configure.md
       - name: iSCSI
         href: linux/sql-server-linux-shared-disk-cluster-configure-iscsi.md
       - name: NFS
@@ -10167,6 +10196,8 @@ items:
         href: linux/sql-server-linux-configure-time-zone-2019.md
       - name: Configure time zone on SQL Server 2017
         href: linux/sql-server-linux-configure-time-zone-2017.md
+      - name: Configure Power BI Report Server catalog
+        href: linux/sql-server-linux-configure-power-bi-report-server-catalog.md
       - name: Configure to send usage and diagnostic data to Microsoft
         href: linux/usage-and-diagnostic-data-configuration-for-sql-server-linux.md
     - name: Containers
@@ -10353,7 +10384,7 @@ items:
     - name: Restore the master database
       href: linux/sql-server-linux-restore-master-database-in-single-user-mode.md
     - name: How to License >>
-      href: https://www.microsoft.com/sql-server/sql-server-2017-pricing
+      href: https://www.microsoft.com/sql-server/sql-server-2022-pricing
     - name: DBA Stack Exchange >>
       href: https://dba.stackexchange.com/questions/tagged/sql-server
     - name: Stack Overflow >>
@@ -10368,8 +10399,6 @@ items:
   items:
   - name: Azure Synapse Analytics >
     href: /azure/synapse-analytics/overview-what-is
-  - name: Azure Arc-enabled data services >
-    href: /azure/azure-arc/data/overview
   - name: Azure SQL
     items: 
     - name: Azure SQL >
@@ -10380,67 +10409,88 @@ items:
       href: /azure/azure-sql/managed-instance/sql-managed-instance-paas-overview
     - name: SQL Server on Azure VMs >
       href: /azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview
-
-- name: Azure Arc-enabled SQL Server
+- name: Azure Arc
   items:
-    - name: Overview
-      href: sql-server/azure-arc/overview.md
-    - name: Release notes
-      href: sql-server/azure-arc/release-notes.md
-    - name: Test Arc-enabled SQL Server using an Azure VM
-      href: sql-server/azure-arc/plan-evaluate-on-azure-virtual-machine.md
-    - name: How-to guides
+    - name: SQL Server enabled by Azure Arc
       items:
-      - name: Deploy
+      - name: Documentation
+        href: sql-server/azure-arc/index.yml
+      - name: Overview
+        href: sql-server/azure-arc/overview.md
+      - name: Release notes
+        href: sql-server/azure-arc/release-notes.md
+      - name: Prerequisites
+        href: sql-server/azure-arc/prerequisites.md
+      - name: How-to guides
         items:
-        - name: Prerequisites
-          href: sql-server/azure-arc/prerequisites.md
-        - name: Deployment options
-          href: sql-server/azure-arc/deployment-options.md
-        - name: Connect interactively
+        - name: Connect SQL Server to Azure using Arc
+          href: sql-server/azure-arc/automatically-connect.md
+        - name: Manage auto deploy
+          href: sql-server/azure-arc/manage-autodeploy.md
+        - name: Alternate methods to connect
           items:
+          - name: Deployment options
+            href: sql-server/azure-arc/deployment-options.md
           - name: Connect when machine not connected to Azure
             href: sql-server/azure-arc/connect.md
           - name: Connect with installer (.msi)
             href: sql-server/azure-arc/connect-with-installer.md
           - name: Connect when machine already connected to Azure
             href: sql-server/azure-arc/connect-already-enabled.md
-        - name: Connect at scale
-          items:
           - name: Azure policy
             href: sql-server/azure-arc/connect-at-scale-policy.md
           - name: Script
             href: sql-server/azure-arc/connect-at-scale-script.md
-          - name: Autodeploy
-            href: sql-server/azure-arc/connect-at-scale-autodeploy.md
           - name: Connect machines using Configuration Manager custom task sequence
             href: sql-server/azure-arc/onboard-configuration-manager-custom-task.md
-    - name: Manage
-      items:
-      - name: Assess
-        href: sql-server/azure-arc/assess.md
-      - name: View databases
-        href: sql-server/azure-arc/view-databases.md
-      - name: Manage SQL Server license and billing options
-        href: sql-server/azure-arc/manage-license-type.md
-      - name: Automated patching
-        href: sql-server/azure-arc/patch.md
-      - name: Automated backups
-        href: sql-server/azure-arc/point-in-time-restore.md
-      - name: Delete from or restore to Azure Arc
-        href: sql-server/azure-arc/delete-from-azure-arc.md
-    - name: Secure
-      items:
-      - name: Configure advanced data Security
-        href: sql-server/azure-arc/configure-advanced-data-security.md
-    - name: FAQ
-      href: sql-server/azure-arc/faq.yml
-    - name: Data collection and reporting
-      href: sql-server/azure-arc/data-collection.md
-    - name: Troubleshoot
-      items:
-      - name: Troubleshoot deployment
-        href: sql-server/azure-arc/troubleshoot-deployment.md
+      - name: Manage
+        items:
+        - name: Assess
+          href: sql-server/azure-arc/assess.md
+        - name: View databases
+          href: sql-server/azure-arc/view-databases.md
+        - name: Configure SQL Server
+          href: sql-server/azure-arc/manage-configuration.md
+        - name: Automate patching
+          href: sql-server/azure-arc/patch.md
+        - name: Disconnect and unregister from Azure Arc
+          href: sql-server/azure-arc/delete-from-azure-arc.md
+        - name: Monitor (preview)
+          href: sql-server/azure-arc/sql-monitoring.md
+        - name: Use activity logs
+          href: sql-server/azure-arc/activity-logs.md
+      - name: Business continuity
+        items:
+        - name: Automated backups to local storage (preview)
+          href: sql-server/azure-arc/backup-local.md
+        - name: Point-in-time restore (preview)
+          href: sql-server/azure-arc/point-in-time-restore.md
+        - name: View Always On failover cluster instances (preview)
+          href: sql-server/azure-arc/support-for-fci.md  
+        - name: View Always On availability group (preview)
+          href: sql-server/azure-arc/manage-availability-group.md
+      - name: Secure
+        items:
+        - name: Configure advanced data Security
+          href: sql-server/azure-arc/configure-advanced-data-security.md
+        - name: Certificate rotation
+          href: sql-server/azure-arc/rotate-certificates.md
+        - name: Extended Security Updates
+          href: sql-server/azure-arc/extended-security-updates.md
+      - name: FAQ
+        href: sql-server/azure-arc/faq.yml
+      - name: Data collection and reporting
+        href: sql-server/azure-arc/data-collection.md
+      - name: Troubleshoot
+        items:
+        - name: Troubleshoot deployment
+          href: sql-server/azure-arc/troubleshoot-deployment.md
+        - name: Troubleshoot connectivity to DPS or telemetry endpoints
+          href: sql-server/azure-arc/troubleshoot-telemetry-endpoint.md
+        - name: Troubleshoot best practices assessment
+          href: sql-server/azure-arc/troubleshoot-assessment.md
+    - name: Azure Arc-enabled data services >
+      href: /azure/azure-arc/data/overview
 
 
 - name: Big Data Clusters
@@ -10455,24 +10505,38 @@ items:
       items:
         - name: Platform release notes
           href: big-data-cluster/release-notes-big-data-cluster.md
-        - name: Cumulative Update 19
-          href: big-data-cluster/release-notes-cumulative-update-19.md
-        - name: Cumulative Update 18
-          href: big-data-cluster/release-notes-cumulative-update-18.md
-        - name: Cumulative Update 17
-          href: big-data-cluster/release-notes-cumulative-update-17.md
-        - name: Cumulative Update 16
-          href: big-data-cluster/release-notes-cumulative-update-16.md
-        - name: Cumulative Update 15
-          href: big-data-cluster/release-notes-cumulative-update-15.md
-        - name: Cumulative Update 14
-          href: big-data-cluster/release-notes-cumulative-update-14.md
-        - name: Cumulative Update 13
-          href: big-data-cluster/release-notes-cumulative-update-13.md
-        - name: Cumulative Update 12
-          href: big-data-cluster/release-notes-cumulative-update-12.md
-        - name: Cumulative Update history
-          href: big-data-cluster/release-notes-cumulative-updates-history.md
+        - name: Known issues
+          href: big-data-cluster/known-issues.md
+        - name: Release history
+          items:
+          - name: Cumulative Update history
+            href: big-data-cluster/release-notes-cumulative-updates-history.md
+          - name: Past details
+            items: 
+            - name: Cumulative Update 23
+              href: big-data-cluster/release-notes-cumulative-update-23.md
+            - name: Cumulative Update 22
+              href: big-data-cluster/release-notes-cumulative-update-22.md
+            - name: Cumulative Update 21
+              href: big-data-cluster/release-notes-cumulative-update-21.md
+            - name: Cumulative Update 20
+              href: big-data-cluster/release-notes-cumulative-update-20.md
+            - name: Cumulative Update 19
+              href: big-data-cluster/release-notes-cumulative-update-19.md
+            - name: Cumulative Update 18
+              href: big-data-cluster/release-notes-cumulative-update-18.md
+            - name: Cumulative Update 17
+              href: big-data-cluster/release-notes-cumulative-update-17.md
+            - name: Cumulative Update 16
+              href: big-data-cluster/release-notes-cumulative-update-16.md
+            - name: Cumulative Update 15
+              href: big-data-cluster/release-notes-cumulative-update-15.md
+            - name: Cumulative Update 14
+              href: big-data-cluster/release-notes-cumulative-update-14.md
+            - name: Cumulative Update 13
+              href: big-data-cluster/release-notes-cumulative-update-13.md
+            - name: Cumulative Update 12
+              href: big-data-cluster/release-notes-cumulative-update-12.md
   - name: Install
     items:
     - name: Get Started
@@ -11265,6 +11329,12 @@ items:
           href: relational-databases/errors-events/mssqlserver-7105-database-engine-error.md
         - name: 7308
           href: relational-databases/errors-events/mssqlserver-7308-database-engine-error.md
+        - name: 7357
+          href: relational-databases/errors-events/mssqlserver-7357-database-engine-error.md
+        - name: 7391
+          href: relational-databases/errors-events/mssqlserver-7391-database-engine-error.md
+        - name: 7399
+          href: relational-databases/errors-events/mssqlserver-7399-database-engine-error.md
         - name: 7711
           href: relational-databases/errors-events/mssqlserver-7711-database-engine-error.md
         - name: 7901
@@ -11609,8 +11679,6 @@ items:
           href: relational-databases/errors-events/mssqlserver-19419-database-engine-error.md
         - name: 19421
           href: relational-databases/errors-events/mssqlserver-19421-database-engine-error.md
-      - name: Errors 20,000 to 33,999
-        items:
         - name: 20557
           href: relational-databases/errors-events/mssqlserver-20557-database-engine-error.md
         - name: 20572
@@ -12326,6 +12394,22 @@ items:
         href: relational-databases/system-catalog-views/sys-database-automatic-tuning-mode-transact-sql.md
       - name: sys.master_files
         href: relational-databases/system-catalog-views/sys-master-files-transact-sql.md
+    - name: Elastic job views
+      items:
+      - name: jobs.job_executions
+        href: relational-databases/system-catalog-views/jobs-job-executions-elastic-jobs-transact-sql.md
+      - name: jobs.jobs
+        href: relational-databases/system-catalog-views/jobs-jobs-elastic-jobs-transact-sql.md
+      - name: jobs.job_versions
+        href: relational-databases/system-catalog-views/jobs-job-versions-elastic-jobs-transact-sql.md
+      - name: jobs.jobsteps
+        href: relational-databases/system-catalog-views/jobs-jobsteps-elastic-jobs-transact-sql.md
+      - name: jobs.jobstep_versions
+        href: relational-databases/system-catalog-views/jobs-jobstep-versions-elastic-jobs-transact-sql.md
+      - name: jobs.target_groups
+        href: relational-databases/system-catalog-views/jobs-target-groups-elastic-jobs-transact-sql.md
+      - name: jobs.target_group_members
+        href: relational-databases/system-catalog-views/jobs-target-group-members-elastic-jobs-transact-sql.md
     - name: Endpoints
       href: relational-databases/system-catalog-views/endpoints-catalog-views-transact-sql.md
       items:
@@ -12375,7 +12459,7 @@ items:
         href: relational-databases/system-catalog-views/sys-external-data-sources-transact-sql.md
       - name: sys.external_file_formats
         href: relational-databases/system-catalog-views/sys-external-file-formats-transact-sql.md
-    - name: Filestream & FileTable
+    - name: FILESTREAM & FileTable
       href: relational-databases/system-catalog-views/filestream-and-filetable-catalog-views-transact-sql.md
       items:
       - name: sys.database_filestream_options
@@ -12424,6 +12508,14 @@ items:
         href: relational-databases/system-catalog-views/sys-remote-logins-transact-sql.md
       - name: sys.servers
         href: relational-databases/system-catalog-views/sys-servers-transact-sql.md
+    - name: Fabric query insights
+      items:
+      - name: queryinsights.exec_requests_history
+        href: relational-databases/system-views/queryinsights-exec-requests-history-transact-sql.md
+      - name: queryinsights.frequently_run_queries
+        href: relational-databases/system-views/queryinsights-frequently-run-queries-transact-sql.md
+      - name: queryinsights.long_running_queries
+        href: relational-databases/system-views/queryinsights-long-running-queries-transact-sql.md
     - name: Object
       href: relational-databases/system-catalog-views/object-catalog-views-transact-sql.md
       items:
@@ -13049,6 +13141,8 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-db-session-space-usage-transact-sql.md
       - name: sys.dm_db_task_space_usage
         href: relational-databases/system-dynamic-management-views/sys-dm-db-task-space-usage-transact-sql.md
+      - name: sys.dm_db_tuning_recommendations
+        href: relational-databases/system-dynamic-management-views/sys-dm-db-tuning-recommendations-transact-sql.md
       - name: sys.dm_db_uncontained_entities
         href: relational-databases/system-dynamic-management-views/sys-dm-db-uncontained-entities-transact-sql.md
       - name: sys.dm_database_copies (Azure SQL Database)
@@ -13076,6 +13170,8 @@ items:
     - name: Execution
       href: relational-databases/system-dynamic-management-views/execution-related-dynamic-management-views-and-functions-transact-sql.md
       items:
+      - name: sys.dm_db_exec_cursors
+        href: relational-databases/system-dynamic-management-views/sys-dm-db-exec-cursors-transact-sql.md
       - name: sys.dm_exec_background_job_queue
         href: relational-databases/system-dynamic-management-views/sys-dm-exec-background-job-queue-transact-sql.md
       - name: sys.dm_exec_background_job_queue_stats
@@ -13225,7 +13321,7 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-xe-session-targets-transact-sql.md
       - name: sys.dm_xe_sessions
         href: relational-databases/system-dynamic-management-views/sys-dm-xe-sessions-transact-sql.md
-    - name: Filestream & FileTable
+    - name: FILESTREAM & FileTable
       href: relational-databases/system-dynamic-management-views/filestream-and-filetable-dynamic-management-views-transact-sql.md
       items:
       - name: sys.dm_filestream_file_io_handles
@@ -13578,6 +13674,7 @@ items:
       - name: sys.dm_os_workers
         href: relational-databases/system-dynamic-management-views/sys-dm-os-workers-transact-sql.md
     - name: Stretch Database
+      href: relational-databases/system-dynamic-management-views/stretch-database-related-dynamic-management-views-transact-sql.md
       items:
       - name: sys.dm_db_rda_migration_status
         href: relational-databases/system-dynamic-management-views/stretch-database-sys-dm-db-rda-migration-status.md
@@ -13679,7 +13776,7 @@ items:
         href: relational-databases/system-functions/fn-syscollector-get-execution-stats-transact-sql.md
       - name: snapshots.fn_trace_getdata
         href: relational-databases/system-functions/snapshots-fn-trace-getdata-transact-sql.md
-    - name: Filestream & FileTable
+    - name: FILESTREAM & FileTable
       href: relational-databases/system-functions/filestream-and-filetable-functions-transact-sql.md
       items:
       - name: FileTableRootPath
@@ -14326,6 +14423,34 @@ items:
         href: relational-databases/system-stored-procedures/sp-tables-ex-transact-sql.md
       - name: sp_testlinkedserver
         href: relational-databases/system-stored-procedures/sp-testlinkedserver-transact-sql.md
+    - name: Elastic jobs
+      items:
+      - name: sp_add_job
+        href: relational-databases/system-stored-procedures/sp-add-job-elastic-jobs-transact-sql.md
+      - name: sp_update_job
+        href: relational-databases/system-stored-procedures/sp-update-job-elastic-jobs-transact-sql.md
+      - name: sp_delete_job
+        href: relational-databases/system-stored-procedures/sp-delete-job-elastic-jobs-transact-sql.md
+      - name: sp_add_jobstep
+        href: relational-databases/system-stored-procedures/sp-add-jobstep-elastic-jobs-transact-sql.md
+      - name: sp_update_jobstep
+        href: relational-databases/system-stored-procedures/sp-update-jobstep-elastic-jobs-transact-sql.md
+      - name: sp_delete_jobstep
+        href: relational-databases/system-stored-procedures/sp-delete-jobstep-elastic-jobs-transact-sql.md
+      - name: sp_start_job
+        href: relational-databases/system-stored-procedures/sp-start-job-elastic-jobs-transact-sql.md
+      - name: sp_stop_job
+        href: relational-databases/system-stored-procedures/sp-stop-job-elastic-jobs-transact-sql.md
+      - name: sp_add_target_group
+        href: relational-databases/system-stored-procedures/sp-add-target-group-elastic-jobs-transact-sql.md
+      - name: sp_delete_target_group
+        href: relational-databases/system-stored-procedures/sp-delete-target-group-elastic-jobs-transact-sql.md
+      - name: sp_add_target_group_member
+        href: relational-databases/system-stored-procedures/sp-add-target-group-member-elastic-jobs-transact-sql.md
+      - name: sp_delete_target_group_member
+        href: relational-databases/system-stored-procedures/sp-delete-target-group-member-elastic-jobs-transact-sql.md
+      - name: sp_purge_jobhistory
+        href: relational-databases/system-stored-procedures/sp-purge-jobhistory-elastic-jobs-transact-sql.md
     - name: FILESTREAM and FileTable
       items:
       - name: Overview
@@ -14588,7 +14713,7 @@ items:
       - name: sp_query_store_force_plan
         href: relational-databases/system-stored-procedures/sp-query-store-force-plan-transact-sql.md
       - name: sp_query_store_remove_plan
-        href: relational-databases/system-stored-procedures/sp-query-store-remove-plan-transct-sql.md
+        href: relational-databases/system-stored-procedures/sp-query-store-remove-plan-transact-sql.md
       - name: sp_query_store_remove_query
         href: relational-databases/system-stored-procedures/sp-query-store-remove-query-transact-sql.md
       - name: sp_query_store_reset_exec_stats
@@ -15456,7 +15581,7 @@ items:
       - name: changefeed.change_feed_table_groups
         href: relational-databases/system-tables/changefeed-change-feed-table-groups-transact-sql.md
       - name: changefeed.change_feed_tables
-        href: relational-databases/system-tables/changefeed-change-feed-tables-transact-sql.md      
+        href: relational-databases/system-tables/changefeed-change-feed-tables-transact-sql.md
     - name: Backup & Restore Tables
       href: relational-databases/system-tables/backup-and-restore-tables-transact-sql.md
       items:
@@ -15563,7 +15688,35 @@ items:
       - name: dbo.sysjobschedules
         href: relational-databases/system-tables/dbo-sysjobschedules-transact-sql.md
       - name: dbo.sysjobservers
-
+        href: relational-databases/system-tables/dbo-sysjobservers-transact-sql.md      
+      - name: dbo.sysjobsteps
+        href: relational-databases/system-tables/dbo-sysjobsteps-transact-sql.md
+      - name: dbo.sysjobstepslogs
+        href: relational-databases/system-tables/dbo-sysjobstepslogs-transact-sql.md
+      - name: dbo.sysnotifications
+        href: relational-databases/system-tables/dbo-sysnotifications-transact-sql.md
+      - name: dbo.sysoperators
+        href: relational-databases/system-tables/dbo-sysoperators-transact-sql.md
+      - name: dbo.sysproxies
+        href: relational-databases/system-tables/dbo-sysproxies-transact-sql.md
+      - name: dbo.sysproxylogin
+        href: relational-databases/system-tables/dbo-sysproxylogin-transact-sql.md
+      - name: dbo.sysproxysubsystem
+        href: relational-databases/system-tables/dbo-sysproxysubsystem-transact-sql.md
+      - name: dbo.sysschedules
+        href: relational-databases/system-tables/dbo-sysschedules-transact-sql.md
+      - name: dbo.syssessions
+        href: relational-databases/system-tables/dbo-syssessions-transact-sql.md
+      - name: dbo.syssubsystems
+        href: relational-databases/system-tables/dbo-syssubsystems-transact-sql.md
+      - name: dbo.systargetservergroupmembers
+        href: relational-databases/system-tables/dbo-systargetservergroupmembers-transact-sql.md
+      - name: dbo.systargetservergroups
+        href: relational-databases/system-tables/dbo-systargetservergroups-transact-sql.md
+      - name: dbo.systargetservers
+        href: relational-databases/system-tables/dbo-systargetservers-transact-sql.md
+      - name: dbo.systaskids
+        href: relational-databases/system-tables/dbo-systaskids-transact-sql.md
       - name: sp_unsetapprole
         href: relational-databases/system-stored-procedures/sp-unsetapprole-transact-sql.md
       - name: sp_validatelogins
@@ -15603,7 +15756,7 @@ items:
       - name: sp_change_feed_disable_db
         href: relational-databases/system-stored-procedures/sp-change-feed-disable-db.md
       - name: sp_change_feed_disable_table
-        href: relational-databases/system-stored-procedures/sp-change-feed-disable-table.md        
+        href: relational-databases/system-stored-procedures/sp-change-feed-disable-table.md
       - name: sp_change_feed_drop_table_group
         href: relational-databases/system-stored-procedures/sp-change-feed-drop-table-group.md
       - name: sp_help_change_feed
@@ -15830,164 +15983,6 @@ items:
         href: relational-databases/system-stored-procedures/sp-xml-removedocument-transact-sql.md
       - name: sp_db_selective_xml_index
         href: relational-databases/system-stored-procedures/sp-db-selective-xml-index-transact-sql.md
-  - name: System tables
-    href: relational-databases/system-tables/system-tables-transact-sql.md
-    items:
-    - name: Extended Events Tables - trace_xe_action_map
-      href: relational-databases/system-tables/extended-events-tables-trace-xe-action-map.md
-    - name: Extended Events Tables - trace_xe_event_map
-      href: relational-databases/system-tables/extended-events-tables-trace-xe-event-map.md
-    - name: Data-tier Application Tables - sysdac_history_internal
-      href: relational-databases/system-tables/data-tier-application-tables-sysdac-history-internal.md
-    - name: Data-tier Application Tables - sysdac_instances_internal
-      href: relational-databases/system-tables/data-tier-application-tables-sysdac-instances-internal.md
-    - name: Mapping System Tables to System Views
-      href: relational-databases/system-tables/mapping-system-tables-to-system-views-transact-sql.md
-    - name: System Base Tables
-      href: relational-databases/system-tables/system-base-tables.md
-    - name: Azure Synapse Link for SQL Tables
-      items:
-      - name: changefeed.change_feed_settings
-        href: relational-databases/system-tables/changefeed-change-feed-settings.md
-      - name: changefeed.change_feed_table_groups
-        href: relational-databases/system-tables/changefeed-change-feed-table-groups-transact-sql.md
-      - name: changefeed.change_feed_tables
-        href: relational-databases/system-tables/changefeed-change-feed-tables-transact-sql.md      
-    - name: Backup & Restore Tables
-      href: relational-databases/system-tables/backup-and-restore-tables-transact-sql.md
-      items:
-      - name: backupfile
-        href: relational-databases/system-tables/backupfile-transact-sql.md
-      - name: backupfilegroup
-        href: relational-databases/system-tables/backupfilegroup-transact-sql.md
-      - name: backupmediafamily
-        href: relational-databases/system-tables/backupmediafamily-transact-sql.md
-      - name: backupmediaset
-        href: relational-databases/system-tables/backupmediaset-transact-sql.md
-      - name: backupset
-        href: relational-databases/system-tables/backupset-transact-sql.md
-      - name: logmarkhistory
-        href: relational-databases/system-tables/logmarkhistory-transact-sql.md
-      - name: restorefile
-        href: relational-databases/system-tables/restorefile-transact-sql.md
-      - name: restorefilegroup
-        href: relational-databases/system-tables/restorefilegroup-transact-sql.md
-      - name: restorehistory
-        href: relational-databases/system-tables/restorehistory-transact-sql.md
-      - name: suspect_pages
-        href: relational-databases/system-tables/suspect-pages-transact-sql.md
-      - name: sysopentapes
-        href: relational-databases/system-tables/sysopentapes-transact-sql.md
-    - name: Change Data Capture Tables
-      href: relational-databases/system-tables/change-data-capture-tables-transact-sql.md
-      items:
-      - name: cdc.<capture_instance>_CT
-        href: relational-databases/system-tables/cdc-capture-instance-ct-transact-sql.md
-      - name: cdc.captured_columns
-        href: relational-databases/system-tables/cdc-captured-columns-transact-sql.md
-      - name: cdc.change_tables
-        href: relational-databases/system-tables/cdc-change-tables-transact-sql.md
-      - name: cdc.ddl_history
-        href: relational-databases/system-tables/cdc-ddl-history-transact-sql.md
-      - name: cdc.lsn_time_mapping
-        href: relational-databases/system-tables/cdc-lsn-time-mapping-transact-sql.md
-      - name: cdc.index_columns
-        href: relational-databases/system-tables/cdc-index-columns-transact-sql.md
-      - name: dbo.cdc_jobs
-        href: relational-databases/system-tables/dbo-cdc-jobs-transact-sql.md
-    - name: Change Tracking Tables
-      href: relational-databases/system-tables/change-tracking-tables-transact-sql.md
-      items:
-      - name: dbo.MSchange_tracking_history
-        href: relational-databases/system-tables/dbo-mschange-tracking-history-transact-sql.md
-    - name: Database Maintenance Plan Tables
-      href: relational-databases/system-tables/database-maintenance-plan-tables-transact-sql.md
-      items:
-      - name: sysdbmaintplan_databases
-        href: relational-databases/system-tables/sysdbmaintplan-databases-transact-sql.md
-      - name: sysdbmaintplan_history
-        href: relational-databases/system-tables/sysdbmaintplan-history-transact-sql.md
-      - name: sysdbmaintplan_jobs
-        href: relational-databases/system-tables/sysdbmaintplan-jobs-transact-sql.md
-      - name: sysdbmaintplans
-        href: relational-databases/system-tables/sysdbmaintplans-transact-sql.md
-    - name: Integration Services Tables
-      href: relational-databases/system-tables/integration-services-tables-transact-sql.md
-      items:
-      - name: sysssislog
-        href: relational-databases/system-tables/sysssislog-transact-sql.md
-      - name: sysssispackagefolders
-        href: relational-databases/system-tables/sysssispackagefolders-transact-sql.md
-      - name: sysssispackages
-        href: relational-databases/system-tables/sysssispackages-transact-sql.md
-    - name: Log Shipping Tables
-      href: relational-databases/system-tables/log-shipping-tables-transact-sql.md
-      items:
-      - name: log_shipping_monitor_alert
-        href: relational-databases/system-tables/log-shipping-monitor-alert-transact-sql.md
-      - name: log_shipping_monitor_error_detail
-        href: relational-databases/system-tables/log-shipping-monitor-error-detail-transact-sql.md
-      - name: log_shipping_monitor_history_detail
-        href: relational-databases/system-tables/log-shipping-monitor-history-detail-transact-sql.md
-      - name: log_shipping_monitor_primary
-        href: relational-databases/system-tables/log-shipping-monitor-primary-transact-sql.md
-      - name: log_shipping_monitor_secondary
-        href: relational-databases/system-tables/log-shipping-monitor-secondary-transact-sql.md
-      - name: log_shipping_primary_databases
-        href: relational-databases/system-tables/log-shipping-primary-databases-transact-sql.md
-      - name: log_shipping_primary_secondaries
-        href: relational-databases/system-tables/log-shipping-primary-secondaries-transact-sql.md
-      - name: log_shipping_secondary
-        href: relational-databases/system-tables/log-shipping-secondary-transact-sql.md
-      - name: log_shipping_secondary_databases
-        href: relational-databases/system-tables/log-shipping-secondary-databases-transact-sql.md
-    - name: SQL Server Agent Tables
-      href: relational-databases/system-tables/sql-server-agent-tables-transact-sql.md
-      items:
-      - name: dbo.sysalerts
-        href: relational-databases/system-tables/dbo-sysalerts-transact-sql.md
-      - name: dbo.syscategories
-        href: relational-databases/system-tables/dbo-syscategories-transact-sql.md
-      - name: dbo.sysdownloadlist
-        href: relational-databases/system-tables/dbo-sysdownloadlist-transact-sql.md
-      - name: dbo.sysjobactivity
-        href: relational-databases/system-tables/dbo-sysjobactivity-transact-sql.md
-      - name: dbo.sysjobhistory
-        href: relational-databases/system-tables/dbo-sysjobhistory-transact-sql.md
-      - name: dbo.sysjobs
-        href: relational-databases/system-tables/dbo-sysjobs-transact-sql.md
-      - name: dbo.sysjobschedules
-        href: relational-databases/system-tables/dbo-sysjobschedules-transact-sql.md
-      - name: dbo.sysjobservers
-        href: relational-databases/system-tables/dbo-sysjobservers-transact-sql.md
-      - name: dbo.sysjobsteps
-        href: relational-databases/system-tables/dbo-sysjobsteps-transact-sql.md
-      - name: dbo.sysjobstepslogs
-        href: relational-databases/system-tables/dbo-sysjobstepslogs-transact-sql.md
-      - name: dbo.sysnotifications
-        href: relational-databases/system-tables/dbo-sysnotifications-transact-sql.md
-      - name: dbo.sysoperators
-        href: relational-databases/system-tables/dbo-sysoperators-transact-sql.md
-      - name: dbo.sysproxies
-        href: relational-databases/system-tables/dbo-sysproxies-transact-sql.md
-      - name: dbo.sysproxylogin
-        href: relational-databases/system-tables/dbo-sysproxylogin-transact-sql.md
-      - name: dbo.sysproxysubsystem
-        href: relational-databases/system-tables/dbo-sysproxysubsystem-transact-sql.md
-      - name: dbo.sysschedules
-        href: relational-databases/system-tables/dbo-sysschedules-transact-sql.md
-      - name: dbo.syssessions
-        href: relational-databases/system-tables/dbo-syssessions-transact-sql.md
-      - name: dbo.syssubsystems
-        href: relational-databases/system-tables/dbo-syssubsystems-transact-sql.md
-      - name: dbo.systargetservergroupmembers
-        href: relational-databases/system-tables/dbo-systargetservergroupmembers-transact-sql.md
-      - name: dbo.systargetservergroups
-        href: relational-databases/system-tables/dbo-systargetservergroups-transact-sql.md
-      - name: dbo.systargetservers
-        href: relational-databases/system-tables/dbo-systargetservers-transact-sql.md
-      - name: dbo.systaskids
-        href: relational-databases/system-tables/dbo-systaskids-transact-sql.md
     - name: Replication Tables
       href: relational-databases/system-tables/replication-tables-transact-sql.md
       items:
@@ -17708,19 +17703,21 @@ items:
           items:
           - name: Overview
             href: t-sql/language-elements/string-operators-transact-sql.md
-          - name: "+ (String Concatenation)"
+          - name: "= (String comparison or assignment)"
+            href: t-sql/language-elements/string-comparison-assignment.md
+          - name: "+ (String concatenation)"
             href: t-sql/language-elements/string-concatenation-transact-sql.md
-          - name: "+= (String Concatenation Assignment)"
+          - name: "+= (String concatenation assignment)"
             href: t-sql/language-elements/string-concatenation-equal-transact-sql.md
-          - name: "% (Wildcard - Character(s) to Match)"
+          - name: "% (Wildcard - character(s) to match)"
             href: t-sql/language-elements/percent-character-wildcard-character-s-to-match-transact-sql.md
-          - name: "[ ] (Wildcard - Character(s) to Match)"
+          - name: "[ ] (Wildcard - character(s) to match)"
             href: t-sql/language-elements/wildcard-character-s-to-match-transact-sql.md
-          - name: "[^] (Wildcard - Character(s) Not to Match)"
+          - name: "[^] (Wildcard - character(s) not to match)"
             href: t-sql/language-elements/wildcard-character-s-not-to-match-transact-sql.md
-          - name: "_ (Wildcard - Match One Character)"
+          - name: "_ (Wildcard - match one character)"
             href: t-sql/language-elements/wildcard-match-one-character-transact-sql.md
-        - name: Operator Precedence
+        - name: Operator precedence
           href: t-sql/language-elements/operator-precedence-transact-sql.md
       - name: Transactions
         href: t-sql/language-elements/transactions-transact-sql.md
@@ -18294,6 +18291,9 @@ items:
         - name: TABLE
           displayName: CREATE TABLE
           href: t-sql/statements/create-table-transact-sql.md
+        - name: TABLE AS CLONE OF
+          displayName: CREATE TABLE AS CLONE OF
+          href: t-sql/statements/create-table-as-clone-of-transact-sql.md
         - name: TABLE (Synapse Analytics and Fabric)
           displayName: CREATE TABLE
           href: t-sql/statements/create-table-azure-sql-data-warehouse.md
@@ -18694,6 +18694,8 @@ items:
           href: t-sql/statements/set-query-governor-cost-limit-transact-sql.md
         - name: QUOTED_IDENTIFIER
           href: t-sql/statements/set-quoted-identifier-transact-sql.md
+        - name: RECOMMENDATIONS
+          href: t-sql/statements/set-recommendations-sql.md          
         - name: REMOTE_PROC_TRANSACTIONS
           href: t-sql/statements/set-remote-proc-transactions-transact-sql.md
         - name: RESULT SET CACHING

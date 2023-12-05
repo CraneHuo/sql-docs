@@ -7,7 +7,7 @@ ms.date: 06/24/2020
 ms.service: sql-database
 ms.subservice: deployment-configuration
 ms.topic: quickstart
-ms.custom: subject-armqs sqldbrb=1, devx-track-azurepowershell, mode-arm, devx-track-arm-template
+ms.custom: subject-armqs sqldbrb=1, mode-arm, devx-track-arm-template
 ---
 
 # Quickstart: Create a single database in Azure SQL Database using an ARM template
@@ -47,7 +47,7 @@ Select **Try it** from the following PowerShell code block to open Azure Cloud S
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
 $location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
 $adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
-$adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
+$adminPassword = Read-Host -Prompt "Enter the SQL Server administrator password" -AsSecureString
 
 $resourceGroupName = "${projectName}rg"
 
@@ -77,7 +77,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 - Create a server-level firewall rule to connect to the single database from on-premises or remote tools. For more information, see [Create a server-level firewall rule](firewall-create-server-level-portal-quickstart.md).
 - After you create a server-level firewall rule, [connect and query](connect-query-content-reference-guide.md) your database using several different tools and languages.
   - [Connect and query using SQL Server Management Studio](connect-query-ssms.md)
-  - [Connect and query using Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)
+  - [Connect and query using Azure Data Studio](/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)
 - To create a single database using the Azure CLI, see [Azure CLI samples](az-cli-script-samples-content-guide.md).
 - To create a single database using Azure PowerShell, see [Azure PowerShell samples](powershell-script-content-guide.md).
 - To learn how to create ARM templates, see [Create your first template](/azure/azure-resource-manager/templates/template-tutorial-create-first-template).

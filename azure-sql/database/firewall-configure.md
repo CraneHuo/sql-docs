@@ -5,7 +5,7 @@ description: Configure server-level IP firewall rules for a database in Azure SQ
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma
-ms.date: 11/01/2022
+ms.date: 07/06/2023
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
@@ -17,12 +17,9 @@ ms.custom:
 # Azure SQL Database and Azure Synapse IP firewall rules
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-When you create a new server in Azure SQL Database or Azure Synapse Analytics named *mysqlserver*, for example, a server-level firewall blocks all access to the public endpoint for the server (which is accessible at *mysqlserver.database.windows.net*). For simplicity, *SQL Database* is used to refer to both SQL Database and Azure Synapse Analytics.
+When you create a new server in Azure SQL Database or Azure Synapse Analytics named *mysqlserver*, for example, a server-level firewall blocks all access to the public endpoint for the server (which is accessible at *mysqlserver.database.windows.net*). For simplicity, *SQL Database* is used to refer to both SQL Database and Azure Synapse Analytics. This article does *not* apply to *Azure SQL Managed Instance*. For information about network configuration, see [Connect your application to Azure SQL Managed Instance](../managed-instance/connect-application-instance.md).
 
-> [!IMPORTANT]
-> This article does *not* apply to *Azure SQL Managed Instance*. For information about network configuration, see [Connect your application to Azure SQL Managed Instance](../managed-instance/connect-application-instance.md).
->
-> Azure Synapse only supports server-level IP firewall rules. It doesn't support database-level IP firewall rules.
+[!INCLUDE [entra-id](../includes/entra-id.md)]
 
 
 ## How the firewall works
@@ -31,9 +28,12 @@ Connection attempts from the internet and Azure must pass through the firewall b
 
    ![Firewall configuration diagram][1]
 
+> [!IMPORTANT]
+> Azure Synapse only supports server-level IP firewall rules. It doesn't support database-level IP firewall rules.
+
 ### Server-level IP firewall rules
 
-These rules enable clients to access your entire server, that is, all the databases managed by the server. The rules are stored in the *master* database. The default value is up to 256 server-level IP firewall rules for a server. If you have the **Allow Azure Services and resources to access this server** setting enabled, this counts as a single firewall rule for the server.
+These rules enable clients to access your entire server, that is, all the databases managed by the server. The rules are stored in the *master* database. The maximum number of server-level IP firewall rules is limited to 128 for a server. If you have the **Allow Azure Services and resources to access this server** setting enabled, this counts as a single firewall rule for the server.
   
 You can configure server-level IP firewall rules by using the Azure portal, PowerShell, or Transact-SQL statements.
 
@@ -41,7 +41,7 @@ You can configure server-level IP firewall rules by using the Azure portal, Powe
 > The maximum number of server-level IP firewall rules is limited to 128 when configuring using the Azure portal.
 
 - To use the portal or PowerShell, you must be the subscription owner or a subscription contributor.
-- To use Transact-SQL, you must connect to the *master* database as the server-level principal login or as the Azure Active Directory administrator. (A server-level IP firewall rule must first be created by a user who has Azure-level permissions.)
+- To use Transact-SQL, you must connect to the *master* database as the server-level principal login or as the Microsoft Entra administrator. (A server-level IP firewall rule must first be created by a user who has Azure-level permissions.)
 
 > [!NOTE]
 > By default, during creation of a new logical SQL server from the Azure portal, the **Allow Azure Services and resources to access this server** setting is set to **No**.
@@ -144,7 +144,7 @@ To set a server-level IP firewall rule in the Azure portal, go to the overview p
 
 2. Add a rule in the **Firewall rules** section to add the IP address of the computer that you're using, and then select **Save**. A server-level IP firewall rule is created for your current IP address.
 
-    ![Set server-level IP firewall rule](./media/firewall-configure/sql-database-server-firewall-settings.png)
+    :::image type="content" source="./media/firewall-configure/sql-database-server-firewall-settings.png" alt-text="Screenshot shows the Networking page where you can set the server-level IP firewall rules.":::
 
 #### From the server overview page
 
@@ -228,9 +228,26 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ```
 
 > [!TIP]
-> For $servername specify the server name and not the fully qualified DNS name e.g. specify **mysqldbserver** instead of **mysqldbserver.database.windows.net**
+> For `$servername`, specify the server name and not the fully qualified DNS name. For example, use `mysqldbserver` instead of `mysqldbserver.database.windows.net`.
 >
 > For a CLI example in the context of a quickstart, see [Create DB - Azure CLI](az-cli-script-samples-content-guide.md) and [Create a single database and configure a server-level IP firewall rule using the Azure CLI](scripts/create-and-configure-database-cli.md).
+
+For Azure Synapse Analytics, refer to the following examples: 
+
+| Cmdlet | Level | Description |
+| --- | --- | --- |
+|[az synapse workspace firewall-rule create](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-create)|Server|Create a firewall rule|
+|[az synapse workspace firewall-rule delete](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-delete)|Server|Delete a firewall rule|
+|[az synapse workspace firewall-rule list](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-list)|Server|List all firewall rules|
+|[az synapse workspace firewall-rule show](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-show)|Server|Get a firewall rule|
+|[az synapse workspace firewall-rule update](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-update)|Server|Update a firewall rule|
+|[az synapse workspace firewall-rule wait](/cli/azure/synapse/workspace/firewall-rule##az-synapse-workspace-firewall-rule-wait)|Server|Place the CLI in a waiting state until a condition of a firewall rule is met|
+
+The following example uses CLI to set a server-level IP firewall rule in Azure Synapse:
+
+```azurecli-interactive
+az synapse workspace firewall-rule create --name AllowAllWindowsAzureIps --workspace-name $workspacename --resource-group $resourcegroupname --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+```
 
 ### Use a REST API to manage server-level IP firewall rules
 

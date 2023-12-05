@@ -13,7 +13,7 @@ monikerRange: "= azuresqldb-current"
 ---
 # sys.sp_cleanup_temporal_history (Transact-SQL)
 
-[!INCLUDE[Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE [Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/asdb-asdbmi.md)]
 
 Removes all rows from temporal history table that match configured HISTORY_RETENTION PERIOD within a single transaction.
 
@@ -54,7 +54,7 @@ It is always recommended to rely on an internal background task for cleanup that
 
 Requires **db_owner** permissions.
 
-## Example
+## Examples
 
 ```sql
 DECLARE @rowcnt INT;

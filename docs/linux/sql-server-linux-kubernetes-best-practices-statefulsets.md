@@ -8,6 +8,8 @@ ms.date: 05/03/2023
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
+ms.custom:
+  - linux-related-content
 ---
 # Deploy SQL Server Linux containers on Kubernetes with StatefulSets
 
@@ -20,6 +22,9 @@ Similarly, the deployment script recommendation is to deploy one SQL Server inst
 Another reason we recommend one SQL Server per deployment script is to allow changes to configuration values, edition, trace flags, and other settings to be made independently for each SQL Server instance deployed.
 
 In the following example, the StatefulSet workload name should match the `.spec.template.metadata.labels` value, which in this case is `mssql`. For more information, see [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
+
+> [!IMPORTANT]  
+> The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead.
 
 ```yaml
 apiVersion: apps/v1
@@ -503,7 +508,7 @@ Tolerations:               node.kubernetes.io/memory-pressure:NoSchedule op=Exis
 ...
 ```
 
-## Next steps
+## Related content
 
 - [Quickstart: Deploy a SQL Server container cluster on Azure](quickstart-sql-server-containers-azure.md)
 - [Quickstart: Deploy a SQL Server Linux container to Kubernetes using Helm charts](sql-server-linux-containers-deploy-helm-charts-kubernetes.md)

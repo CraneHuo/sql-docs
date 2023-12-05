@@ -9,7 +9,7 @@ ms.date: 06/25/2019
 ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.topic: how-to
-ms.custom: sqldbrb=2
+ms.custom: sqldbrb=2, ignite-2023
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
 ---
 
@@ -93,7 +93,7 @@ Once the move completes, remove the resources in the source region to avoid unne
 1. Delete the failover group using [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup).
 1. Delete each source database using [Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) for each of the databases on the source server. This will automatically terminate geo-replication links.
 1. Delete the source server using [Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver).
-1. Remove the key vault, audit storage containers, event hub, Azure Active Directory (Azure AD) instance, and other dependent resources to stop being billed for them.
+1. Remove the key vault, audit storage containers, event hub, Microsoft Entra instance, and other dependent resources to stop being billed for them.
 
 ## Move elastic pools
 
@@ -147,7 +147,7 @@ Once the move completes, remove the resources in the source region to avoid unne
 1. Delete the failover group using [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup).
 1. Delete each source elastic pool on the source server using [Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool).
 1. Delete the source server using [Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver).
-1. Remove the key vault, audit storage containers, event hub, Azure AD instance, and other dependent resources to stop being billed for them.
+1. Remove the key vault, audit storage containers, event hub, Microsoft Entra tenant, and other dependent resources to stop being billed for them.
 
 ## Move a managed instance
 
@@ -169,32 +169,32 @@ Once the move completes, remove the resources in the source region to avoid unne
 
 Create a failover group between each source managed instance and the corresponding target instance of SQL Managed Instance.
 
-Replication of all databases on each instance will be initiated automatically. For more information, see [Auto-failover groups](auto-failover-group-sql-db.md).
+Replication of all databases on each instance will be initiated automatically. For more information, see [Auto-failover groups](../managed-instance/auto-failover-group-sql-mi.md).
 
 ### Monitor the preparation process
 
-You can periodically call [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) to monitor replication of your databases from the source to the target. The output object of `Get-AzSqlDatabaseFailoverGroup` includes a property for the **ReplicationState**:
+You can periodically call [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) to monitor replication of your databases from the source to the target. The output object of `Get-AzSqlDatabaseInstanceFailoverGroup` includes a property for the **ReplicationState**:
 
-- **ReplicationState = 2** (CATCH_UP) indicates the database is synchronized and can be safely failed over.
-- **ReplicationState = 0** (SEEDING) indicates that the database isn't yet seeded, and an attempt to fail over will fail.
+- **ReplicationState = CATCH_UP** indicates the database is synchronized and can be safely failed over.
+- **ReplicationState = SEEDING** indicates that the database isn't yet seeded, and an attempt to fail over will fail.
 
 ### Test synchronization
 
-Once **ReplicationState** is `2`, connect to each database, or subset of databases using the secondary endpoint `<fog-name>.secondary.database.windows.net` and perform any query against the databases to ensure connectivity, proper security configuration, and data replication.
+Once **ReplicationState** is `CATCH_UP`, connect to the geo-secondary using the secondary endpoint `<fog-name>.secondary.<zone_id>.database.windows.net` and perform any query against the databases to ensure connectivity, proper security configuration, and data replication.
 
 ### Initiate the move
 
-1. Connect to the target managed instance by using the secondary endpoint `<fog-name>.secondary.database.windows.net`.
-1. Use [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) to switch the secondary managed instance to be the primary with full synchronization. This operation will succeed, or it will roll back.
-1. Verify that the command has completed successfully by using `nslook up <fog-name>.secondary.database.windows.net` to ascertain that the DNS CNAME entry points to the target region IP address. If the switch command fails, the CNAME won't be updated.
+1. Connect to the target managed instance by using the secondary endpoint `<fog-name>.secondary.<zone_id>.database.windows.net`.
+1. Use [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) to switch the secondary managed instance to be the primary with full synchronization. This operation will succeed, or it will roll back.
+1. Verify that the command has completed successfully by using `nslook up <fog-name>.secondary.<zone_id>.database.windows.net` to ascertain that the DNS CNAME entry points to the target region IP address. If the switch command fails, the CNAME won't be updated.
 
 ### Remove the source managed instances
 
 Once the move finishes, remove the resources in the source region to avoid unnecessary charges.
 
-1. Delete the failover group using [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup). This will drop the failover group configuration and terminate geo-replication links between the two instances.
+1. Delete the failover group using [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup). This will drop the failover group configuration and terminate geo-replication links between the two instances.
 1. Delete the source managed instance using [Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance).
-1. Remove any additional resources in the resource group, such as the virtual cluster, virtual network, and security group.
+1. Remove any additional resources in the resource group, such as the virtual network and security group.
 
 ## Next steps
 

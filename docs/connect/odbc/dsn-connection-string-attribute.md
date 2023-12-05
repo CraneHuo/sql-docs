@@ -4,7 +4,7 @@ description: How to connect using the ODBC driver. Find keywords for connection 
 author: David-Engel
 ms.author: v-davidengel
 ms.reviewer: v-chojas
-ms.date: 08/08/2022
+ms.date: 07/31/2023
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -27,6 +27,8 @@ The following table lists the available keywords and the attributes for each pla
 | [AttachDBFileName](../../relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client.md) | [SQL_COPT_SS_ATTACHDBFILENAME](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptssattachdbfilename) | LMW |
 | [Authentication](dsn-connection-string-attribute.md#authentication---sql_copt_ss_authentication) | [SQL_COPT_SS_AUTHENTICATION](dsn-connection-string-attribute.md#authentication---sql_copt_ss_authentication) | LMW |
 | [AutoTranslate](../../relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client.md) | [SQL_COPT_SS_TRANSLATE](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptsstranslate) | LMW |
+| [ClientCertificate](dsn-connection-string-attribute.md#clientcertificate) | | LMW |
+| [ClientKey](dsn-connection-string-attribute.md#clientkey) | | LMW |
 | [ColumnEncryption](dsn-connection-string-attribute.md#columnencryption---sql_copt_ss_column_encryption) | [SQL_COPT_SS_COLUMN_ENCRYPTION](dsn-connection-string-attribute.md#columnencryption---sql_copt_ss_column_encryption) | LMW |
 | [ConnectRetryCount](connection-resiliency.md) | [SQL_COPT_SS_CONNECT_RETRY_COUNT](connection-resiliency.md) | LMW |
 | [ConnectRetryInterval](connection-resiliency.md) | [SQL_COPT_SS_CONNECT_RETRY_INTERVAL](connection-resiliency.md) | LMW |
@@ -106,6 +108,7 @@ The following table lists the available keywords and the attributes for each pla
 | | [SQL_COPT_SS_CLIENT_CONNECTION_ID](../../relational-databases/native-client-odbc-api/sqlgetconnectattr.md) | LMW |
 | | [SQL_COPT_SS_CONCAT_NULL](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptssconcatnull) | LMW |
 | | [SQL_COPT_SS_CONNECTION_DEAD](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptssconnectiondead) | LMW |
+| | [SQL_COPT_SS_DATACLASSIFICATION_VERSION](data-classification.md) (v17.4.2+) | LMW |
 | | [SQL_COPT_SS_ENLIST_IN_DTC](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptssenlistindtc) | W |
 | | [SQL_COPT_SS_ENLIST_IN_XA](dsn-connection-string-attribute.md#sql_copt_ss_enlist_in_xa) | LMW |
 | | [SQL_COPT_SS_FALLBACK_CONNECT](dsn-connection-string-attribute.md#sql_copt_ss_fallback_connect) | LMW |
@@ -118,8 +121,7 @@ The following table lists the available keywords and the attributes for each pla
 | | [SQL_COPT_SS_TXN_ISOLATION](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptsstxnisolation) | LMW |
 | | [SQL_COPT_SS_USER_DATA](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptssuserdata) | LMW |
 | | [SQL_COPT_SS_WARN_ON_CP_ERROR](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptsswarnoncperror) | LMW |
-| [ClientCertificate](dsn-connection-string-attribute.md#clientcertificate) | | LMW |
-| [ClientKey](dsn-connection-string-attribute.md#clientkey) | | LMW |
+
 
 Here are some connection string keywords and connection attributes, which aren't documented in [Using Connection String Keywords with SQL Server Native Client](../../relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client.md), [SQLSetConnectAttr](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md), and [SQLSetConnectAttr Function](../../odbc/reference/syntax/sqlsetconnectattr-function.md).
 
@@ -159,17 +161,17 @@ Controls the use of SQL Server Fallback Connections. This one is no longer suppo
 
 ### Authentication - SQL_COPT_SS_AUTHENTICATION
 
-Sets the authentication mode to use when connecting to SQL Server. For more information, see [Using Azure Active Directory](using-azure-active-directory.md).
+Sets the authentication mode to use when connecting to SQL Server. For more information, see [Using Microsoft Entra ID](using-azure-active-directory.md).
 
 | Keyword Value | Attribute Value | Description |
 |-|-|-|
 | |SQL_AU_NONE|(Default) Not set. Combination of other attributes determines authentication mode.|
 |SqlPassword|SQL_AU_PASSWORD|SQL Server authentication with username and password.|
-|ActiveDirectoryIntegrated|SQL_AU_AD_INTEGRATED|Azure Active Directory Integrated authentication.|
-|ActiveDirectoryPassword|SQL_AU_AD_PASSWORD|Azure Active Directory Password authentication.|
-|ActiveDirectoryInteractive|SQL_AU_AD_INTERACTIVE|Azure Active Directory Interactive authentication.|
-|ActiveDirectoryMsi|SQL_AU_AD_MSI|Azure Active Directory Managed Identity authentication. For user-assigned identity, UID is set to the object ID of the user identity. |
-|ActiveDirectoryServicePrincipal|SQL_AU_AD_SPA|Azure Active Directory Service Principal authentication. UID is set to the client ID of the service principal. PWD is set to the client secret. |
+|ActiveDirectoryIntegrated|SQL_AU_AD_INTEGRATED|Microsoft Entra integrated authentication.|
+|ActiveDirectoryPassword|SQL_AU_AD_PASSWORD|Microsoft Entra password authentication.|
+|ActiveDirectoryInteractive|SQL_AU_AD_INTERACTIVE|Microsoft Entra Interactive authentication.|
+|ActiveDirectoryMsi|SQL_AU_AD_MSI|Microsoft Entra managed identity authentication. For user-assigned identity, UID is set to the object ID of the user identity. |
+|ActiveDirectoryServicePrincipal|SQL_AU_AD_SPA|Microsoft Entra service principal authentication. UID is set to the client ID of the service principal. PWD is set to the client secret. |
 | |SQL_AU_RESET|Unset. Overrides any DSN or connection string setting.|
 
 > [!NOTE]
@@ -332,7 +334,7 @@ Available starting with version 18.1, this option can be used with the strict en
 
 ### SQL_COPT_SS_ACCESS_TOKEN
 
-Allows the use of an Azure Active Directory access token for authentication. For more information, see [Using Azure Active Directory](using-azure-active-directory.md).
+Allows the use of a Microsoft Entra access token for authentication. For more information, see [Using Microsoft Entra ID](using-azure-active-directory.md).
 
 | Attribute Value | Description |
 |-|-|

@@ -5,7 +5,7 @@ description: Learn about the Azure SQL Database service high availability capabi
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 05/01/2023
+ms.date: 06/14/2023
 ms.service: sql-database
 ms.subservice: high-availability
 ms.topic: conceptual
@@ -19,8 +19,8 @@ monikerRange: "= azuresql || = azuresql-db"
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure SQL Database](high-availability-sla.md)
-> * [Azure SQL Managed Instance](../managed-instance/high-availability-sla.md)
+> * [Azure SQL Database](high-availability-sla.md?view=azuresql-db&preserve-view=true)
+> * [Azure SQL Managed Instance](../managed-instance/high-availability-sla.md?view=azuresql-mi&preserve-view=true)
 
 This article describes the high availability architecture in Azure SQL Database.
 
@@ -39,14 +39,14 @@ There are three high availability architectural models:
 - **Hyperscale model** which uses a distributed system of highly available components such as compute nodes, page servers, log service, and persistent storage. Each component supporting a Hyperscale database provides its own redundancy and resiliency to failures. Compute nodes, page servers, and log service run on Azure Service Fabric, which controls health of each component and performs failovers to available healthy nodes as necessary. Persistent storage uses Azure Storage with its native high availability and redundancy capabilities. To learn more, see [Hyperscale architecture](hyperscale-architecture.md).
 
 
-Within each of the three availability models, SQL Database supports local redundancy and zonal redundancy options. Local redundancy provides resiliency against regional outages, while zonal redundancy improves resiliency further by protecting against outages of an availability zone within a region.
+Within each of the three availability models, SQL Database supports local redundancy and zonal redundancy options. Local redundancy provides resiliency within a datacenter, while zonal redundancy improves resiliency further by protecting against outages of an availability zone within a region.
 
 The following table shows the availability options based on service tiers: 
 
 
-| Service tier | High availability model | Locally-redundant availability | Zone-redundant availability |
+| Service tier | High availability model | locally redundant availability | Zone-redundant availability |
 |---|---|---| --- |
-| General purpose (vCore) | Remote storage  |  Yes | Yes |
+| General Purpose (vCore) | Remote storage  |  Yes | Yes |
 | Business Critical (vCore) | Local storage  | Yes | Yes |
 | Hyperscale (vCore) | Hyperscale | Yes | Yes |
 | Basic (DTU) | Remote storage  | Yes | No |
@@ -55,11 +55,11 @@ The following table shows the availability options based on service tiers:
 
 
 
-## Locally-redundant availability 
+## Locally redundant availability 
 
-Locally-redundant availability is based on storing your database to [locally-redundant storage (LRS)](/azure/storage/common/storage-redundancy#locally-redundant-storage) which copies your data three times within a single datacenter in the primary region and protects your data in the event of local failure, such as a small-scale network or power failure. LRS is the lowest-cost redundancy option and offers the least durability compared to other options.  If a large-scale disaster such as fire or flooding occurs within a region, all replicas of a storage account using LRS may be lost or unrecoverable. As such, to further protect your data when using the locally-redundant availability option, consider using a more resilient storage option for your [database backups](automated-backups-overview.md#backup-storage-redundancy). This does not apply to Hyperscale databases, where the same storage is used for both data files and backups. 
+Locally redundant availability is based on storing your database to [locally redundant storage (LRS)](/azure/storage/common/storage-redundancy#locally-redundant-storage) which copies your data three times within a single datacenter in the primary region and protects your data in the event of local failure, such as a small-scale network or power failure. LRS is the lowest-cost redundancy option and offers the least durability compared to other options.  If a large-scale disaster such as fire or flooding occurs within a region, all replicas of a storage account using LRS may be lost or unrecoverable. As such, to further protect your data when using the locally redundant availability option, consider using a more resilient storage option for your [database backups](automated-backups-overview.md#backup-storage-redundancy). This does not apply to Hyperscale databases, where the same storage is used for both data files and backups. 
 
-Locally-redundant availability is available to all databases in all service tiers. 
+Locally redundant availability is available to all databases in all service tiers and Recovery Point Objective (RPO) which indicates the amount of data loss is zero. 
 
 ### <a id="general-purpose-service-tier-zone-redundant-availability"></a> Basic, Standard and General Purpose service tiers 
 
@@ -88,7 +88,7 @@ As an extra benefit, the local storage availability model includes the ability t
 
 The Hyperscale service tier architecture is described in [Distributed functions architecture](./service-tier-hyperscale.md#distributed-functions-architecture). 
 
-:::image type="content" source="./media/high-availability-sla/hyperscale-architecture.png" alt-text="Diagram showing Hyperscale functional architecture.":::
+:::image type="content" source="./media/service-tier-hyperscale/hyperscale-architecture.png" alt-text="Diagram showing Hyperscale functional architecture.":::
 
 The availability model in Hyperscale includes four layers:
 
@@ -105,7 +105,7 @@ For more information on high availability in Hyperscale, see [Database High Avai
 
 Zone-redundant availability is based on storing your database to [zone-redundant storage (ZRS)](/azure/storage/common/storage-redundancy#zone-redundant-storage), which copies your data across three Azure availability zones in the primary region. Each availability zone is a separate physical location with independent power, cooling, and networking.
 
-Zone-redundant availability is available to databases in the General Purpose, Premium, Business Critical and Hyperscale service tiers of the vCore purchasing model, and not the Basic and Standard service tiers of the DTU-based purchasing model. 
+Zone-redundant availability is available to databases in the General Purpose, Premium, Business Critical and Hyperscale service tiers of the vCore purchasing model, and not the Basic and Standard service tiers of the DTU-based purchasing model. Zone-redundant availability ensures Recovery Point Objective (RPO) which indicates the amount of data loss is zero.
 
 ### <a id="general-purpose-service-tier-zone-redundant-availability"></a> General Purpose service tier
 
@@ -123,28 +123,35 @@ The zone-redundant version of the high availability architecture for the General
 Consider the following when configuring your General Purpose databases with zone-redundancy: 
 
 - For General Purpose tier the zone-redundant configuration is Generally Available in the following regions: 
+  - (Africa) South Africa North
   - (Asia Pacific) Australia East
-  - (Asia Pacific) Southeast Asia  
+  - (Asia Pacific) East Asia
+  - (Asia Pacific) Japan East
+  - (Asia Pacific) Korea Central
+  - (Asia Pacific) Southeast Asia
+  - (Asia Pacific) Central India
+  - (Asia Pacific) China North 3
+  - (Asia Pacific) UAE North
   - (Europe) France Central
   - (Europe) North Europe
+  - (Europe) Norway East
   - (Europe) West Europe
   - (Europe) UK South
+  - (Europe) Switzerland North
+  - (Europe) Sweden Central
   - (Middle East) Qatar Central
   - (North America) East US
   - (North America) East US 2
   - (North America) South Central US
   - (North America) West US 2  
   - (South America) Brazil South
-- It is in preview in the following region: Japan East.
-- For zone redundant availability, choosing a [maintenance window](maintenance-window.md) other than the default is currently available in [select regions](maintenance-window.md#azure-region-support).  
+- For zone redundant availability, choosing a [maintenance window](maintenance-window.md) other than the default is currently available in [select regions](maintenance-window.md#azure-sql-database-region-support-for-maintenance-windows).  
 - Zone-redundant configuration is only available in SQL Database when standard-series (Gen5) hardware is selected. 
 - Zone-redundancy is not available for Basic and Standard service tiers in the DTU purchasing model. 
 
 ### <a id="premium-and-business-critical-service-tier-zone-redundant-availability"></a> Premium and Business Critical service tiers
 
 By default, the cluster of nodes for the local storage availability model is created in the same datacenter. With the introduction of [Azure Availability Zones](/azure/availability-zones/az-overview), SQL Database can place different replicas of a Premium or Business Critical database in different availability zones in the same region. To eliminate a single point of failure, the control ring is also duplicated across multiple zones as three gateway rings (GW). The routing to a specific gateway ring is controlled by [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview). Because the zone-redundant configuration in the Premium or Business Critical service tiers doesn't create additional database redundancy, you can enable it at no extra cost. By selecting a zone-redundant configuration, you can make your Premium or Business Critical databases and elastic pools resilient to a much larger set of failures, including catastrophic datacenter outages, without any changes to the application logic. You can also convert any existing Premium or Business Critical databases or elastic pools to zone-redundant configuration. 
-
-Because zone-redundant databases have replicas in different datacenters with some distance between them, the increased network latency may increase the transaction commit time, and thus impact the performance of some OLTP workloads. You can always return to the single-zone configuration by disabling the zone-redundancy setting. This process is an online operation similar to the regular service objective upgrade. At the end of the process, the database or elastic pool is migrated from a zone-redundant ring to a single-zone ring or vice versa.
 
 The zone-redundant version of the high availability architecture is illustrated by the following diagram:
 
@@ -154,7 +161,7 @@ Consider the following when configuring your Premium or Business Critical databa
 
 - When using the Business Critical tier, zone-redundant configuration is only available when the Gen5 hardware is selected. 
 - For up to date information about the regions that support zone-redundant databases, see [Services support by region](/azure/availability-zones/az-region).
-- For zone redundant availability, choosing a [maintenance window](./maintenance-window.md) other than the default is currently available in [select regions](maintenance-window.md#azure-region-support).
+- For zone redundant availability, choosing a [maintenance window](./maintenance-window.md) other than the default is currently available in [select regions](maintenance-window.md#azure-sql-database-region-support-for-maintenance-windows).
 
 ### <a id="hyperscale-service-tier-zone-redundant-availability"></a> Hyperscale service tier
 
@@ -165,16 +172,16 @@ Enabling this configuration ensures zone-level resiliency through replication ac
 Consider the following limitations:
 
 - Zone redundant configuration can only be specified during database creation. This setting can't be modified once the resource is provisioned. Use [Database copy](database-copy.md), [point-in-time restore](recovery-using-backups.md#point-in-time-restore), or create a [geo-replica](active-geo-replication-overview.md) to update the zone redundant configuration for an existing Hyperscale database. When using one of these update options, if the target database is in a different region than the source or if the database backup storage redundancy from the target differs from the source database, the [copy operation](database-copy.md#database-copy-for-azure-sql-hyperscale) will be a size of data operation.
-- For zone redundant availability, choosing a [maintenance window](maintenance-window.md) other than the default is currently available in [select regions](maintenance-window.md#azure-region-support).
+- For zone redundant availability, choosing a [maintenance window](maintenance-window.md) other than the default is currently available in [select regions](maintenance-window.md#azure-sql-database-region-support-for-maintenance-windows).
 - Only standard-series (Gen5) hardware is supported.
 - Named replicas aren't currently supported.
-- Zone redundancy can't currently be specified when migrating an existing database from another Azure SQL Database service tier to Hyperscale.
+- There's currently no option to specify zone redundancy when migrating a database to Hyperscale using the Azure portal. However, zone redundancy can be specified using Azure PowerShell, Azure CLI, or the REST API when migrating an existing database from another Azure SQL Database service tier to Hyperscale. Here's an example with Azure CLI: `az sql db update --resource-group "myResourceGroup" --server "myServer" --name "myDB" --edition Hyperscale --zone-redundant true`
 - At least 1 high availability compute replica and the use of zone-redundant or geo-zone-redundant backup storage is required for enabling the zone redundant configuration for Hyperscale.
 
 
 ### `master` database zone redundant availability
 
-In Azure SQL Database, a [server](./logical-servers.md) is a logical construct that acts as a central administrative point for a collection of databases. At the server level, you can administer logins, Azure Active Directory authentication, firewall rules, auditing rules, threat detection policies, and auto-failover groups. Data related to some of these features, such as logins and firewall rules, is stored in the `master` database. Similarly, data for some DMVs, for example [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database), is also stored in the `master` database.
+In Azure SQL Database, a [server](./logical-servers.md) is a logical construct that acts as a central administrative point for a collection of databases. At the server level, you can administer logins, authentication method, firewall rules, auditing rules, threat detection policies, and auto-failover groups. Data related to some of these features, such as logins and firewall rules, is stored in the `master` database. Similarly, data for some DMVs, for example [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database), is also stored in the `master` database.
 
 When a database with a zone-redundant configuration is created on a logical server, the `master` database associated with the server is automatically made zone-redundant as well. This ensures that in a zonal outage, applications using the database remain unaffected because features dependent on the `master` database, such as logins and firewall rules, are still available. Making the `master` database zone-redundant is an asynchronous process and will take some time to finish in the background.
 

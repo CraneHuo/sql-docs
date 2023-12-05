@@ -5,7 +5,7 @@ description: SQL Auditing for Azure SQL Database and Azure Synapse Analytics tra
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 04/26/2023
+ms.date: 05/31/2023
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
@@ -37,13 +37,14 @@ You can use SQL Database auditing to:
 - **Analyze** reports. You can find suspicious events, unusual activity, and trends.
 
 > [!IMPORTANT]  
-> Auditing for Azure SQL Database, Azure Synapse and Azure SQL Managed Instance is optimized for availability and performance of the database or instance being audited. During periods of very high activity or high network load, the auditing feature may allow transactions to proceed without recording all of the events marked for auditing.
+> Auditing for Azure SQL Database, Azure Synapse Analytics SQL pools, and Azure SQL Managed Instance is optimized for availability and performance of the database or instance being audited. During periods of very high activity or high network load, the auditing feature may allow transactions to proceed without recording all of the events marked for auditing.
 
 ## Auditing limitations
 
-- Enabling auditing on a paused **Azure Synapse** isn't supported. To enable auditing, resume Azure Synapse.
+- Enabling auditing on a paused **Azure Synapse SQL pool** isn't supported. To enable auditing, resume the **Synapse SQL pool**.
+- Enabling auditing by using User Assigned Managed Identity (UAMI) isn't supported on **Azure Synapse**.
 - Auditing for **Azure Synapse SQL pools** supports default audit action groups **only**.
-- When you configure the auditing for your [logical server in Azure](logical-servers.md) or Azure SQL Database with log destination as the storage account, the target storage account must be enabled with access to storage account keys. If the storage account is configured to use Azure AD-only authentication and not configured for access key usage, auditing can't be configured.
+- When you configure auditing for a [logical server in Azure](logical-servers.md) or Azure SQL Database with the log destination as a storage account, the authentication mode must match the configuration for that storage account. If using storage access keys as the authentication type, the target storage account must be enabled with access to the storage account keys. If the storage account is configured to only use authentication with Microsoft Entra ID ([formerly Azure Active Directory](/azure/active-directory/fundamentals/new-name)), auditing can be configured to use managed identities for authentication.
 
 ## Remarks
 
@@ -55,8 +56,8 @@ You can use SQL Database auditing to:
 - You can write audit logs to an Azure Storage account behind a VNet or firewall.
 - For details about the log format, hierarchy of the storage folder, and naming conventions, see the [Blob Audit Log Format Reference](./audit-log-format.md).
 - Auditing on [Read-Only Replicas](read-scale-out.md) is automatically enabled. For more information about the hierarchy of the storage folders, naming conventions, and log format, see the [SQL Database Audit Log Format](audit-log-format.md).
-- When using Azure AD Authentication, failed logins records *don't* appear in the SQL audit log. To view failed login audit records, you need to visit the [Azure Active Directory portal](/azure/active-directory/reports-monitoring/concept-sign-ins), which logs details of these events.
-- Logins are routed by the gateway to the specific instance where the database is located. With Azure AD logins, the credentials are verified before attempting to use that user to sign into the requested database. In the case of failure, the requested database is never accessed, so no auditing occurs. With SQL logins, the credentials are verified on the requested data, so in this case they can be audited. Successful logins, which obviously reach the database, are audited in both cases.
+- When using Microsoft Entra authentication, failed logins records *don't* appear in the SQL audit log. To view failed login audit records, you need to visit the [Microsoft Entra admin center](https://entra.microsoft.com), which logs details of these events.
+- Logins are routed by the gateway to the specific instance where the database is located. With Microsoft Entra logins, the credentials are verified before attempting to use that user to sign into the requested database. In the case of failure, the requested database is never accessed, so no auditing occurs. With SQL logins, the credentials are verified on the requested data, so in this case they can be audited. Successful logins, which obviously reach the database, are audited in both cases.
 - After you've configured your auditing settings, you can turn on the new threat detection feature and configure emails to receive security alerts. When you use threat detection, you receive proactive alerts on anomalous database activities that can indicate potential security threats. For more information, see [Getting started with threat detection](threat-detection-overview.md).
 - After a database with auditing enabled is copied to another [logical server](logical-servers.md), you may receive an email notifying you that the audit failed. This is a known issue and auditing should work as expected on the newly copied database.
 

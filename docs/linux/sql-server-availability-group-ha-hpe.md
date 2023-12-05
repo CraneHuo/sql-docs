@@ -8,7 +8,9 @@ ms.date: 05/03/2023
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
-ms.custom: intro-deployment
+ms.custom:
+  - intro-deployment
+  - linux-related-content
 ---
 # Tutorial: Set up a three node Always On availability group with HPE Serviceguard for Linux
 
@@ -41,7 +43,7 @@ This tutorial consists of the following tasks:
 
   The instructions in this tutorial are validated against HPE Serviceguard for Linux. A trial edition is available for download from [HPE](https://www.hpe.com/us/en/resources/servers/serviceguard-linux-trial.html).
 
-- SQL Server database files on logical volume mount (LVM) for all three virtual machines. See [Quick start guide for Serviceguard Linux (HPE)](https://support.hpe.com/hpesc/public/docDisplay?docId=a00107699en_us)
+- SQL Server database files on logical volume mount (LVM) for all three virtual machines. See [Quick start guide for Serviceguard Linux (HPE)](https://support.hpe.com/hpesc/public/docDisplay?docId=a00112895en_us&page=GUID-1E75E8C6-C674-48D1-B30D-DED738431FDD.html)
 
 - Ensure that you have a OpenJDK Java runtime installed on the VMs. The IBM Java SDK isn't supported.
 
@@ -73,8 +75,8 @@ In this step, install HPE Serviceguard for Linux on all three VMs. The following
 
 To install Serviceguard, use the `cminstaller` method. Specific instructions are available in the following links:
 
-- [Install Serviceguard for Linux on two nodes](https://support.hpe.com/hpesc/public/docDisplay?docId=a00107699en_us#Install_serviceguard_using_cminstaller). Refer to the section **Install_serviceguard_using_cminstaller**.
-- [Install Serviceguard quorum server on the third node](https://support.hpe.com/hpesc/public/docDisplay?docId=a00107699en_us#Install_QS_from_the_ISO). Refer to the section **Install_QS_from_the_ISO**.
+- [Install Serviceguard for Linux on two nodes](https://support.hpe.com/hpesc/public/docDisplay?docId=a00112895en_us&page=GUID-1E75E8C6-C674-48D1-B30D-DED738431FDD.html). Refer to the section **Install_serviceguard_using_cminstaller**.
+- [Install Serviceguard quorum server on the third node](https://support.hpe.com/hpesc/public/docDisplay?docId=a00112895en_us&page=GUID-5C321932-E5F7-4D05-8A55-33E56BE7AFB0.html). Refer to the section **Install_QS_from_the_ISO**.
 
 After you complete the installation of the HPE Serviceguard cluster, you can enable cluster management portal on TCP port 5522 on the primary replica node. The following steps add a rule to the firewall to allow 5522. The following command is for a Red Hat Enterprise Linux (RHEL). you need to run similar commands for other distributions:
 
@@ -87,105 +89,17 @@ sudo firewall-cmd --reload
 
 Follow theses instructions to configure and create the HPE Serviceguard cluster. In this step, you will also configure the quorum server.
 
-1. [Configure the Serviceguard quorum server on the third node](https://support.hpe.com/hpesc/public/docDisplay?docId=a00107699en_us#Configure_QS). Refer to the **Configure_QS** section.
-1. [Configure and create Serviceguard cluster on the other two nodes](https://support.hpe.com/hpesc/public/docDisplay?docId=a00107699en_us#Configure_and_create_cluster). Refer to the **Configure_and_create_Cluster** section.
+1. [Configure the Serviceguard quorum server on the third node](https://support.hpe.com/hpesc/public/docDisplay?docId=a00112895en_us&page=GUID-C371758D-AF60-4FA9-B541-E1198650162A.html). Refer to the **Configure_QS** section.
+1. [Configure and create Serviceguard cluster on the other two nodes](https://support.hpe.com/hpesc/public/docDisplay?docId=a00112895en_us&page=GUID-43419A91-E430-42F3-BFE4-29CC7FAA64D0.html). Refer to the **Configure_and_create_Cluster** section.
 
 > [!NOTE]  
 > You can bypass manual installation of your HPE Serviceguard cluster and quorum, by adding the [HPE Serviceguard for Linux (SGLX) extension](https://techcommunity.microsoft.com/t5/sql-server-blog/hpe-sglx-the-new-azure-vm-extension-for-sql-server-on-linux/ba-p/3723764) from the Azure VM marketplace, when you create your VM.
 
-### Create the load balancer in the Azure portal
 
-For Deployments in Azure Cloud, HPE Serviceguard for Linux requires a load balancer to enable client connections with the primary replica, to substitute traditional IP addresses.
-
-1. In the Azure portal, open the resource group that contains the Serviceguard cluster nodes or virtual machines.
-1. In the resource group, select **Add**.
-1. Search for "load balancer" and then, in the search results, select the **Load Balancer** that is published by Microsoft.
-1. On the **Load Balancer** pane, select **Create**.
-1. Configure the load balancer as follows:
-
-   | Setting | Value |
-   | --- | --- |
-   | **Name** | The load balancer name. For example, `SQLAvailabilityGroupLB`. |
-   | **Type** | Internal |
-   | **SKU** | Basic or Standard |
-   | **Virtual network** | VNet used for the VM replicas |
-   | **Subnet** | Subnet in which SQL Servers are hosted |
-   | **IP Address Assignment** | Static |
-   | **Private IP address** | Create a private IP within subnet |
-   | **Subscription** | Choose the concerned subscription |
-   | **Resource Group** | Choose the concerned resource group |
-   | **Location** | Select same location as SQL nodes |
-
-### Configure the backend pool
-
-The backend pool is the addresses of the two instances on which the Serviceguard cluster is configured.
-
-1. In your resource group, select the load balancer that you created.
-1. Navigate to **Settings > Backend pools**, and select **Add** to create a backend address pool.
-1. On **Add backend pool**, under **Name**, type a name for the backend pool.
-1. Under **Associated to**, select **Virtual machine**.
-1. Select the virtual machine in the environment, and associate the appropriate IP address to each selection.
-1. Select **Add**.
-
-#### Create a probe
-
-The probe defines how Azure verifies which of the Serviceguard cluster node is primary replica. Azure probes the service based on the IP address on a port that you define when you create the probe.
-
-1. On the **Load balancer settings** pane, select **Health probes**.
-
-1. On the **Health probes** pane, select **Add**.
-
-1. Use the following values to configure the probe:
-
-   | Setting | Value |
-   | --- | --- |
-   | **Name** | Name representing the probe. For example, `SQLAGPrimaryReplicaProbe`. |
-   | **Protocol** | TCP |
-   | **Port** | You can use any available port. For example, 59999. |
-   | **Interval** | 5 |
-   | **Unhealthy threshold** | 2 |
-
-1. Select **OK**.
-
-1. Sign in to all your virtual machines, and open the probe port using the following commands:
-
-   ```bash
-   sudo firewall-cmd --zone=public --add-port=59999/tcp --permanent
-   sudo firewall-cmd --reload
-   ```
-
-Azure creates the probe and then uses it to test the Serviceguard node on which the primary replica instance of the availability group is running. Remember the port configured (59999), which is required to [deploy the AG in the Serviceguard cluster](#deploy-the-sql-server-availability-group-workload-hpe-cluster-manager).
-
-### Set the load balancing rules
-
-The load balancing rules configure how the load balancer routes traffic to the Serviceguard node, which is the primary replica in the cluster. For this load balancer, enable the direct server return, because only one of the Serviceguard cluster nodes can be a primary replica at a time.
-
-1. On the **Load balancer settings** pane, select **Load balancing rules**.
-1. On the **Load balancing rules** pane, select **Add**.
-1. Configure the load balancing rule using the following settings:
-
-   | Setting | Value |
-   | --- | --- |
-   | **Name** | Name representing the load balancing rules. For example, `SQLAGPrimaryReplicaListener`. |
-   | **Protocol** | TCP |
-   | **Port** | 1433 |
-   | **Backend port** | 1433. This value is ignored because this rule uses Floating IP. |
-   | **Probe** | Use the name of the probe that you created for this load balancer. |
-   | **Session persistence** | None |
-   | **Idle timeout (minutes)** | 4 |
-   | **Floating IP** | Enabled |
-
-1. Select **OK**.
-
-1. Azure configures the load balancing rule. Now the load balancer is configured to route traffic to the Serviceguard node that is the primary replica instance in the cluster.
-
-Take note of the load balancer's frontend IP address "LbReadWriteIP", which is required to [deploy the AG in the Serviceguard cluster](#deploy-the-sql-server-availability-group-workload-hpe-cluster-manager).
-
-At this point, the resource group has a load balancer that connects to all Serviceguard nodes. The load balancer also contains an IP address for the clients to connect to the primary replica instance in the cluster, so that any machine that is a primary replica can respond to requests for the availability group.
 
 ## Create the availability group and add a sample database
 
-In this step, create an availability group with two (or more) synchronous replicas and a configuration only replica, which provides data protection and may also provide high availability. The following diagram represents this architecture:
+In this step, create an availability group with two (or more) synchronous replicas and a configuration only replica, which provides data protection and might also provide high availability. The following diagram represents this architecture:
 
 :::image type="content" source="media/sql-server-linux-availability-group-ha/2-configuration-only.png" alt-text="Screenshot showing how the primary replica synchronizes user data and configuration data with the secondary replica. The primary replica only synchronizes configuration data with the configuration only replica. The configuration only replica doesn't have user data replicas.":::
 
@@ -359,7 +273,7 @@ Connect to the primary replica and run the following T-SQL commands to:
 CREATE DATABASE [db1];
 GO
 
--- set the database in full recovery mode
+-- set the database in full recovery model
 ALTER DATABASE [db1] SET RECOVERY FULL; 
 GO
 
@@ -379,7 +293,97 @@ After successfully completing the previous steps, you can see an `ag1` availabil
 
 In HPE Serviceguard, deploy the SQL Server workload on availability group through Serviceguard cluster manager UI.
 
-Deploy the availability group workload and enable high availability (HA), disaster recovery (DR) via Serviceguard cluster using the [Serviceguard manager graphical user interface](https://support.hpe.com/hpesc/public/docDisplay?docId=a00107699en_us#Protect_your_alwayson_availability_group). Refer to the section **Protecting Microsoft SQL Server on Linux for Always On Availability Groups**.
+Deploy the availability group workload and enable high availability (HA), disaster recovery (DR) via Serviceguard cluster using the [Serviceguard manager graphical user interface](https://support.hpe.com/hpesc/public/docDisplay?docId=a00112895en_us&page=GUID-BD13B685-12ED-4BA0-83CD-181B312F6138.html). Refer to the section **Protecting Microsoft SQL Server on Linux for Always On Availability Groups**.
+
+### Create the load balancer in the Azure portal
+
+For Deployments in Azure Cloud, HPE Serviceguard for Linux requires a load balancer to enable client connections with the primary replica, to substitute traditional IP addresses.
+
+1. In the Azure portal, open the resource group that contains the Serviceguard cluster nodes or virtual machines.
+1. In the resource group, select **Add**.
+1. Search for "load balancer" and then, in the search results, select the **Load Balancer** that is published by Microsoft.
+1. On the **Load Balancer** pane, select **Create**.
+1. Configure the load balancer as follows:
+
+   | Setting | Value |
+   | --- | --- |
+   | **Name** | The load balancer name. For example, `SQLAvailabilityGroupLB`. |
+   | **Type** | Internal |
+   | **SKU** | Basic or Standard |
+   | **Virtual network** | VNet used for the VM replicas |
+   | **Subnet** | Subnet in which SQL Servers are hosted |
+   | **IP Address Assignment** | Static |
+   | **Private IP address** | Create a private IP within subnet |
+   | **Subscription** | Choose the concerned subscription |
+   | **Resource Group** | Choose the concerned resource group |
+   | **Location** | Select same location as SQL nodes |
+
+### Configure the backend pool
+
+The backend pool is the addresses of the two instances on which the Serviceguard cluster is configured.
+
+1. In your resource group, select the load balancer that you created.
+1. Navigate to **Settings > Backend pools**, and select **Add** to create a backend address pool.
+1. On **Add backend pool**, under **Name**, type a name for the backend pool.
+1. Under **Associated to**, select **Virtual machine**.
+1. Select the virtual machine in the environment, and associate the appropriate IP address to each selection.
+1. Select **Add**.
+
+#### Create a probe
+
+The probe defines how Azure verifies which of the Serviceguard cluster node is primary replica. Azure probes the service based on the IP address on a port that you define when you create the probe.
+
+1. On the **Load balancer settings** pane, select **Health probes**.
+
+1. On the **Health probes** pane, select **Add**.
+
+1. Use the following values to configure the probe:
+
+   | Setting | Value |
+   | --- | --- |
+   | **Name** | Name representing the probe. For example, `SQLAGPrimaryReplicaProbe`. |
+   | **Protocol** | TCP |
+   | **Port** | You can use any available port. For example, 59999. |
+   | **Interval** | 5 |
+   | **Unhealthy threshold** | 2 |
+
+1. Select **OK**.
+
+1. Sign in to all your virtual machines, and open the probe port using the following commands:
+
+   ```bash
+   sudo firewall-cmd --zone=public --add-port=59999/tcp --permanent
+   sudo firewall-cmd --reload
+   ```
+
+Azure creates the probe and then uses it to test the Serviceguard node on which the primary replica instance of the availability group is running. Remember the port configured (59999), which is required to [deploy the AG in the Serviceguard cluster](#deploy-the-sql-server-availability-group-workload-hpe-cluster-manager).
+
+### Set the load balancing rules
+
+The load balancing rules configure how the load balancer routes traffic to the Serviceguard node, which is the primary replica in the cluster. For this load balancer, enable the direct server return, because only one of the Serviceguard cluster nodes can be a primary replica at a time.
+
+1. On the **Load balancer settings** pane, select **Load balancing rules**.
+1. On the **Load balancing rules** pane, select **Add**.
+1. Configure the load balancing rule using the following settings:
+
+   | Setting | Value |
+   | --- | --- |
+   | **Name** | Name representing the load balancing rules. For example, `SQLAGPrimaryReplicaListener`. |
+   | **Protocol** | TCP |
+   | **Port** | 1433 |
+   | **Backend port** | 1433. This value is ignored because this rule uses Floating IP. |
+   | **Probe** | Use the name of the probe that you created for this load balancer. |
+   | **Session persistence** | None |
+   | **Idle timeout (minutes)** | 4 |
+   | **Floating IP** | Enabled |
+
+1. Select **OK**.
+
+1. Azure configures the load balancing rule. Now the load balancer is configured to route traffic to the Serviceguard node that is the primary replica instance in the cluster.
+
+Take note of the load balancer's frontend IP address "LbReadWriteIP", which is required to [deploy the AG in the Serviceguard cluster](#deploy-the-sql-server-availability-group-workload-hpe-cluster-manager).
+
+At this point, the resource group has a load balancer that connects to all Serviceguard nodes. The load balancer also contains an IP address for the clients to connect to the primary replica instance in the cluster, so that any machine that is a primary replica can respond to requests for the availability group.
 
 ## Perform automatic failover and join the node back to cluster
 
@@ -388,8 +392,8 @@ For the automatic failover test, you can bring down the primary replica (power o
 1. The cluster manager promotes one of the secondary replicas in the availability group to primary.
 1. The failed primary replica automatically joins the cluster after it is back up. The cluster manager promotes it to secondary replica.
 
-For HPE Serviceguard, refer to the section [**Testing the setup for failover readiness**](https://support.hpe.com/hpesc/public/docDisplay?docId=a00107699en_us#Test_the_setup_preparedness)
+For HPE Serviceguard, refer to the section [**Testing the setup for failover readiness**](https://support.hpe.com/hpesc/public/docDisplay?docId=a00112895en_us&page=GUID-1119C5B1-3DEE-473D-8684-A7816BE12B7D.html)
 
-## Next steps
+## Related content
 
-- Learn more about Always On [Availability Groups on Linux](sql-server-linux-availability-group-overview.md).
+- [Availability Groups on Linux](sql-server-linux-availability-group-overview.md)

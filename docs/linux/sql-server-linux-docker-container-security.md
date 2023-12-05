@@ -8,8 +8,10 @@ ms.date: 02/15/2023
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
-ms.custom: engagement-fy23
-monikerRange: ">= sql-server-linux-2017 || >= sql-server-2017"
+ms.custom:
+  - engagement-fy23
+  - linux-related-content
+monikerRange: ">=sql-server-linux-2017||>=sql-server-2017"
 ---
 
 # Secure SQL Server Linux containers
@@ -39,7 +41,7 @@ Follow these steps to build a [!INCLUDE [sssql17-md](../includes/sssql17-md.md)]
 1. Start the container.
 
    > [!IMPORTANT]  
-   > The `SA_PASSWORD` environment variable is deprecated. Please use `MSSQL_SA_PASSWORD` instead.
+   > The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead.
 
     ```bash
     docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyStrongPassword@" --cap-add SYS_PTRACE --name sql1 -p 1433:1433 -d 2017-latest-non-root
@@ -178,9 +180,9 @@ Following is an example of how the connection can be encrypted to [!INCLUDE [ssn
    > [!NOTE]  
    > If you are using RHEL 8 and above, you can also use `podman run` command instead of `docker run`.
 
-Follow the "Register the certificate on your client machine" and "Example connection strings" sections documented in [Client Initiated Encryption](sql-server-linux-encrypted-connections.md#client-initiated-encryption) to start encrypting connections to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux containers.
+Follow the "Register the certificate on your client machine" and "Example connection strings" sections documented in [Client Initiated Encryption](sql-server-linux-encrypted-connections.md?tabs=client#overview) to start encrypting connections to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux containers.
 
-## Next steps
+## Related content
 
 <!--SQL Server 2017 on Linux -->
 ::: moniker range="= sql-server-linux-2017 || = sql-server-2017"

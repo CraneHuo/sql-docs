@@ -4,16 +4,23 @@ description: In this article, you learn different ways of connecting SQL Server 
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 05/17/2023
-ms.service: sql
+ms.date: 07/18/2023
 ms.topic: conceptual
 ---
 
 # Connect SQL Server instances to Azure at scale with a script
 
-This article describes how to connect SQL Servers installed on multiple Windows or Linux machines to Azure ARC as a single task using a script. If the machines are already connected to Azure Arc, use [Azure policy](connect-at-scale-policy.md) to deploy the Azure SQL extension.
+[!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
-For the best experience, use an Azure Active Directory [service principal](/azure/active-directory/develop/app-objects-and-service-principals). A service principal is a special limited management identity that is granted only the minimum permission necessary to connect machines to Azure and to create the Azure resources for Azure Arc-enabled server and Azure Arc-enabled SQL Server.
+> [!IMPORTANT]  
+> Azure Arc automatically installs the Azure extension for SQL Server when a server connected to Azure Arc has SQL Server installed. All the SQL Server instance resources are automatically created in Azure, providing a centralized management platform for all your SQL Servers.
+To automatically connect your SQL Server instances, see [Automatically Connect your SQL Server to Azure Arc](automatically-connect.md).
+Use the method below, if your server is already connected to Azure, but Azure extension for SQL Server is not deployed automatically using above methods.
+>
+
+This article describes how to connect SQL Servers installed on multiple Windows or Linux machines to Azure Arc as a single task using a script. If the machines are already connected to Azure Arc, use [Azure policy](connect-at-scale-policy.md) to deploy the Azure SQL extension.
+
+For the best experience, use Microsoft Entra ID. With Microsoft Entra ID, you define a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). The service principal is a special limited management identity that is granted only the minimum permissions necessary to connect machines to Azure and to create the Azure resources for Azure Arc-enabled server and [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)].
 
 Before you get started, be sure to review the [prerequisites](prerequisites.md) and make sure that you've created a [custom role](/azure/role-based-access-control/custom-roles-portal) that meets the required permissions.
 
@@ -110,6 +117,6 @@ After you connected the SQL Server instances to Azure, go to the [Azure portal](
 
 ## Next steps
 
-- Learn how to [Configure your SQL Server instance for periodic environment health check using on-demand SQL assessment](assess.md)
+- Learn how to [Configure your SQL Server instance for periodic environment health check using best practices assessment](assess.md)
 
-- Learn how to [Protect Azure Arc-enabled SQL Server with Microsoft Defender for Cloud](configure-advanced-data-security.md)
+- Learn how to [use Microsoft Defender for Cloud to protect [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)]](configure-advanced-data-security.md)

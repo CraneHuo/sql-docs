@@ -4,13 +4,13 @@ description: "Verifies the database ledger and the table ledgers."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 05/23/2023
+ms.date: 06/13/2023
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current||>= sql-server-ver16||>= sql-server-linux-ver16"
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16"
 ---
 # sys.sp_verify_database_ledger (Transact-SQL)
 
@@ -51,9 +51,9 @@ The name of the table that you want to verify.
 
 ## Return code values
 
-0 (success) or 1 (failure).
+`0` (success) or `1` (failure).
 
-## Result sets
+## Result set
 
 One row, with one column called `last_verified_block_id`.
 

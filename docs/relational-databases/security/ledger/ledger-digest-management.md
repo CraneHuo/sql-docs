@@ -4,9 +4,10 @@ description: This article provides information on digest management for a ledger
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: mathoma
-ms.date: 05/23/2023
+ms.date: 11/14/2023
 ms.service: sql-database
 ms.subservice: security
+ms.custom: ignite-2023
 ms.topic: conceptual
 monikerRange: "= azuresqldb-current||>= sql-server-ver16||>= sql-server-linux-ver16"
 ---
@@ -43,13 +44,13 @@ If you use an Azure Storage account for the storage of the database digests, con
 
 #### Azure Storage account permission
 
-If you use **Azure SQL Database** or **Azure SQL Managed Instance**, make sure that your logical server or managed instance (System Identity) has sufficient RBAC permissions to write digests by adding it to the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role.
+If you use **Azure SQL Database** or **Azure SQL Managed Instance**, make sure that your logical server or managed instance (System Identity) has sufficient RBAC permissions to write digests by adding it to the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role. In case you use Active geo-replication or auto-failover groups make sure that the secondary replica(s) have the same RBAC permission on the Azure Storage account.
 
 If you use **SQL Server**, you have to create a shared access signature (SAS) on the digest container to allow SQL Server to connect and authenticate against the Azure Storage account.
 
 - Create a container on the Azure Storage account, named **sqldbledgerdigests**.
 - Create a policy on a container with the *Read*, *Add*, *Create*, *Write*, and *List* permissions, and generate a shared access signature key.
-- For each container used for digest file storage, create a [SQL Server credential](../authentication-access/credentials-database-engine.md) whose name matches the container path.
+- For the sqldbledgerdigests container used for digest file storage, create a [SQL Server credential](../authentication-access/credentials-database-engine.md) whose name matches the container path.
 
 The following example assumes that an Azure Storage container, a policy, and a SAS key have been created. This is needed by SQL Server to access the digest files in the container.
 
@@ -99,16 +100,16 @@ Generating database digests requires the `GENERATE LEDGER DIGEST` permission. Fo
 Restoring the database back to an earlier point in time, also known as [Point in Time Restore](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore), is an operation frequently used when a mistake occurs and users need to quickly revert the state of the database back to an earlier point in time. When uploading the generated digests to Azure Storage or Azure Confidential Ledger, the *create time* of the database is captured that these digests map to. Every time the database is restored, it's tagged with a new *create time* and this technique allows us to store the digests across different "incarnations" of the database. For SQL Server, the *create time* is the current UTC time when the digest upload is enabled for the first time. Ledger preserves the information regarding when a restore operation occurred, allowing the verification process to use all the relevant digests across the various incarnations of the database. Additionally, users can inspect all digests for different create times to identify when the database was restored and how far back it was restored to. Since this data is written in immutable storage, this information will be protected as well.
 
 > [!NOTE]
-> Ledger in Azure SQL Managed Instance is currently in public preview. If you perform a native restore of a database backup, you need to change the digest path manually using the Azure Portal, PowerShell or the Azure CLI.
+> If you perform a native restore of a database backup in Azure SQL Managed Instance, you need to change the digest path manually using the Azure Portal, PowerShell or the Azure CLI.
 
 ### Active geo-replication and Always On availability groups
 
-Active geo-replication or auto-failover groups can be configured for Azure SQL Database or Azure SQL Managed Instance. Replication across geographic regions is asynchronous for performance reasons and, thus, allows the secondary database to be slightly behind compared to the primary. In the event of a geographic failover, any latest data that hasn't yet been replicated is lost. Ledger will only issue database digests for data that has been replicated to geographic secondaries to guarantee that digests will never reference data that might be lost in case of a geographic failover. This only applies for automatic generation and storage of database digests.
+Active geo-replication or auto-failover groups can be configured for Azure SQL Database or Azure SQL Managed Instance. Replication across geographic regions is asynchronous for performance reasons and, thus, allows the secondary database to be slightly behind compared to the primary. In the event of a geographic failover, any latest data that hasn't yet been replicated is lost. Ledger will only issue database digests for data that has been replicated to geographic secondaries to guarantee that digests will never reference data that might be lost in case of a geographic failover. This only applies for automatic generation and storage of database digests. In a failover group, both primary and secondary database will have the same digest path. Even when you perform a failover, the digest path doesn't change for both primary and secondary database.
 
-When your database is part of an Always On availability group in SQL Server, the same principle as active geo-replication is used. The upload of the digests is only done if all transactions have been replicated to the secondary replicas.
+If failover group is deleted or you drop the link, both databases will behave as primary databases.
+At that point the digest path of the previous secondary database will change and we will add a folder RemovedSecondaryReplica to the path.
 
-> [!NOTE]
-> Ledger in Azure SQL Managed Instance is currently in public preview. The Managed Instance link feature is not supported.
+When your database is part of an Always On availability group or a Managed Instance link in SQL Server, the same principle as active geo-replication is used. The upload of the digests is only done if all transactions have been replicated to the secondary replicas.
 
 ## Next steps
 

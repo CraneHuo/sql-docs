@@ -9,6 +9,8 @@ ms.date: 03/22/2023
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
 ms.topic: how-to
+ms.custom:
+  - sql-migration-content
 ---
 # Migrate failover cluster instance to SQL Server on Azure VMs
 
@@ -40,7 +42,7 @@ Prepare Azure for migration with Server Migration.
 | **Task** | **Details** |
 | --- | --- |
 | **Create an Azure Migrate project** | Your Azure account needs Contributor or Owner permissions to [create a new project](/azure/migrate/create-manage-projects). |
-| **Verify permissions for your Azure account** | Your Azure account needs Contributor or Owner permissions on the Azure subscription, permissions to register Azure Active Directory (Azure AD) apps, and User Access Administrator permissions on the Azure subscription to create a Key Vault, to create a VM, and to write to an Azure managed disk. |
+| **Verify permissions for your Azure account** | Your Azure account needs Contributor or Owner permissions on the Azure subscription, permissions to register apps in Microsoft Entra ID ([formerly Azure Active Directory](/azure/active-directory/fundamentals/new-name)), and User Access Administrator permissions on the Azure subscription to create a Key Vault, to create a VM, and to write to an Azure managed disk. |
 | **Set up an Azure virtual network** | [Setup](/azure/virtual-network/manage-virtual-network#create-a-virtual-network) an Azure virtual network (VNet). When you replicate to Azure, Azure VMs are created and joined to the Azure VNet that you specify when you set up migration. |
 
 To check you have proper permissions, follow these steps:
@@ -165,7 +167,7 @@ To prepare source machines, you'll need information from the cluster.
 >  
 > - Maintain disk ownership throughout the replication process until the final cutover. If there is a change in disk ownership, there is a chance that the volumes could be corrupted and replication would need to be to retriggered. Set the preferred owner for each disk to avoid transfer of ownership during the replication process.
 >  
-> - Avoid patching activities and system reboots during the replication process to avoid transfer of disk ownership.
+> - Avoid patching activities and system restarts during the replication process to avoid transfer of disk ownership.
 
 To prepare source machines, do the following:
 

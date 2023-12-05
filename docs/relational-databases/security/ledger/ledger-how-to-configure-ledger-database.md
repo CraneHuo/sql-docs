@@ -4,10 +4,10 @@ description: This article discusses how to configure a ledger database in Azure 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: mathoma
-ms.date: 05/23/2023
+ms.date: 11/14/2023
 ms.service: sql-database
 ms.subservice: security
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, ignite-2023
 ms.topic: how-to
 zone_pivot_groups: as1-azuresql-sql
 monikerRange: "= azuresqldb-current||>= sql-server-ver16||>= sql-server-linux-ver16"
@@ -49,7 +49,7 @@ This article provides information on configuring a [ledger database](ledger-over
 
 ## Enable ledger database using T-SQL
 
-Open a query editor like [SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md) or [Azure Data Studio](../../../azure-data-studio/download-azure-data-studio.md)and connect to your logical SQL Server. The below example creates a General Purpose database. The `WITH LEDGER=ON` clause will create the ledger database.
+Open a query editor like [SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md), [Azure Data Studio](../../../azure-data-studio/download-azure-data-studio.md) or [SQL Server Data Tools (SSDT)](../../../ssdt/download-sql-server-data-tools-ssdt.md) in Visual Studio and connect to your logical SQL Server. The below example creates a General Purpose database. The `WITH LEDGER=ON` clause will create the ledger database.
 
 ```sql
 CREATE DATABASE Database01
@@ -102,6 +102,10 @@ az sql db create \
     --ledger-on
 ```
 
+
+
+
+
 ---
 
 ::: zone-end
@@ -109,9 +113,6 @@ az sql db create \
 ::: zone pivot="as1-azure-sql-managed-instance"
 
 This article provides information on configuring a [ledger database](ledger-overview.md) using T-SQL, PowerShell, or the Azure CLI for **Azure SQL Managed Instance**. For information on creating a ledger database in [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] or Azure SQL Database, use the switch at the top of this page.
-
-> [!NOTE]
-> Ledger in Azure SQL Managed Instance is currently in public preview.
 
 ## Prerequisites
 
@@ -123,12 +124,12 @@ This article provides information on configuring a [ledger database](ledger-over
 > [!NOTE]
 > Enabling the ledger functionality at the database level will make all tables in this database updatable ledger tables. This option cannot be changed after the database is created. Creating a table with the option `LEDGER = OFF` will throw an error message.
 
-
 # [T-SQL](#tab/t-sql2)
 
 ## Enable ledger database using T-SQL
 
-1. Sign into your managed instance using SQL Server Management Studio (SSMS) or Azure Data Studio.
+1. Sign into your managed instance using SQL Server Management Studio (SSMS), Azure Data Studio or SQL Server Data Tools (SSDT).
+
 1. Create a ledger database using the following T-SQL statement:
 
    ```sql
@@ -168,6 +169,10 @@ az sql midb create \
     --ledger-on
 ```
 
+
+
+
+
 ---
 
 ::: zone-end
@@ -179,11 +184,11 @@ This article provides information on creating a [ledger database](ledger-overvie
 ## Prerequisites
 
 - [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)]
-- [SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md) or [Azure Data Studio](../../../azure-data-studio/download-azure-data-studio.md)
+- [SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md), [Azure Data Studio](../../../azure-data-studio/download-azure-data-studio.md) or [SQL Server Data Tools](../../../ssdt/download-sql-server-data-tools-ssdt.md)
 
 ## Create a ledger database using T-SQL
 
-1. Sign into your [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] instance using SSMS or Azure Data Studio.
+1. Sign into your [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] instance using SSMS, Azure Data Studio or SSDT.
 1. Create a ledger database using the following T-SQL statement:
 
    ```sql

@@ -4,7 +4,7 @@ description: This article describes the new serverless compute tier and compares
 author: oslake
 ms.author: moslake
 ms.reviewer: wiassaf, mathoma
-ms.date: 04/25/2023
+ms.date: 10/20/2023
 ms.service: sql-database
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -113,7 +113,7 @@ The SQL memory cache grows as data is fetched from disk in the same way and with
 
 ### <a name="disk-cache-mgmt"></a> Disk cache management
 
-In the Hyperscale service tier for both serverless and provisioned compute tiers, each compute replica uses a Resilient Buffer Pool Extension (RBPEX) cache, which stores data pages on local SSD to improve IO performance.  However, in the serverless compute tier for Hyperscale, the RBPEX cache for each compute replica automatically grows and shrinks in response to increasing and decreasing workload demand.  The maximum size the RBPEX cache can grow to is three times the maximum memory configured for the database.  For details on maximum memory and RBPEX auto-scaling limits in serverless, see [serverless Hyperscale resource limits](resource-limits-vcore-single-databases.md#hyperscale---serverless-compute---gen-5).
+In the Hyperscale service tier for both serverless and provisioned compute tiers, each compute replica uses a Resilient Buffer Pool Extension (RBPEX) cache, which stores data pages on local SSD to improve IO performance.  However, in the serverless compute tier for Hyperscale, the RBPEX cache for each compute replica automatically grows and shrinks in response to increasing and decreasing workload demand.  The maximum size the RBPEX cache can grow to is three times the maximum memory configured for the database.  For details on maximum memory and RBPEX auto-scaling limits in serverless, see [serverless Hyperscale resource limits](resource-limits-vcore-single-databases.md#hyperscale---serverless-compute---standard-series-gen5).
 
 ## Auto-pausing and auto-resuming
 
@@ -593,11 +593,11 @@ The serverless compute tier with support up to 40 max vCores is available worldw
 
 ### Regions supporting 80 max vCores
 
-Currently, 80 max vCores in serverless is supported in the following regions with more regions planned: Australia East, Australia Southeast, Canada Central, Central US, East Asia, East US, East US 2, France Central, France South, India Central, Japan East, Japan West, North Central US, North Europe, Norway East, Qatar Central, South Africa North, South Central US, Switzerland North, UK South, UK West, West Europe, West US, West US 2, and West US 3.
+Currently, 80 max vCores in serverless is supported in the following regions with more regions planned: Australia East, Australia Southeast, Brazil South, Canada Central, Central US, East Asia, East US, East US 2, France Central, France South, Germany West Central, India Central, India South, Japan East, Japan West, North Central US, North Europe, Norway East, Qatar Central, South Africa North, South Central US, Switzerland North, UK South, UK West, West Europe, West Central US, West US, West US 2, and West US 3.
 
 ### Regions supporting availability zones for 80 max vCores
 
-Currently, 80 max vCores in serverless with availability zone support is limited to the following regions with more regions planned: East US, West Europe, West US 2, and West US 3.
+Currently, 80 max vCores in serverless with availability zone support is limited to the following regions with more regions planned: Australia East, Brazil South, Canada Central, Central US, East Asia, East US, East US 2, France Central, Germany West Central, India Central, India South, Japan East, Japan West, North Central US, North Europe, South Central US, UK South, West Central US, West Europe, West US, West US 2, and West US 3.
 
 ## Next steps
 

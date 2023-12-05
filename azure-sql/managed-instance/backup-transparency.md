@@ -1,8 +1,8 @@
 ---
 title: Backup transparency for backup history
 description: Learn how to use backup transparency to view the backup history of Azure SQL Managed Instance.
-author: strahinjas 
-ms.author: sstefanovic
+author: Stralle
+ms.author: strrodic
 ms.date: 11/16/2022
 ms.service: sql-managed-instance
 ms.subservice: backup-restore
@@ -27,7 +27,6 @@ The `msdb` database in SQL Managed Instance displays the following backup inform
 - The type of automated backup taken, such as full, differential, or log.
 - Metadata about native backups taken manually, although fields like file path and usernames might not be populated. Use the `is_copyonly` column to determine whether a backup was taken manually or automatically.
 - Metadata about the backup, including status, size, time, and location.
-- The replica where the backup was taken, such as the primary or secondary managed instance. The ability to take backups from the secondary replica currently is available only on the Business Critical service tier.
 
 The `msdb` database *does not* have the following information:
 

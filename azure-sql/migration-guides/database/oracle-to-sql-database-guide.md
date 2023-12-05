@@ -3,11 +3,13 @@ title: "Oracle to Azure SQL Database: Migration guide"
 description: In this guide, you learn how to migrate your Oracle schema to Azure SQL Database by using SQL Server Migration Assistant for Oracle.
 author: croblesm
 ms.author: roblescarlos
-ms.reviewer: mathoma, kendralittle
+ms.reviewer: mathoma
 ms.date: 08/25/2020
 ms.service: sql-database
 ms.subservice: migration-guide
 ms.topic: how-to
+ms.custom:
+  - sql-migration-content
 ---
 
 # Migration guide: Oracle to Azure SQL Database
@@ -18,7 +20,7 @@ This guide teaches you [to migrate](https://azure.microsoft.com/migration/migrat
 
 For other migration guides, see [Azure Database Migration Guides](/data-migration).
 >[!important]
-> Try new [Database Migration Assessment for Oracle extension in Azure Data Studio](/sql/azure-data-studio/extensions/database-migration-assessment-for-oracle-extension) for Oracle to SQL pre-assessment and workload categorization. If you are in early phase of Oracle to SQL migration and would need to do a high level workload assessment , interested in sizing Azure SQL target for the Oracle workload  or understand feature migration parity, try the new extension. For detailed code assessment and conversion, continue with SSMA for Oracle.
+> Try new [Database Migration Assessment for Oracle extension in Azure Data Studio](/azure-data-studio/extensions/database-migration-assessment-for-oracle-extension) for Oracle to SQL pre-assessment and workload categorization. If you are in early phase of Oracle to SQL migration and would need to do a high level workload assessment , interested in sizing Azure SQL target for the Oracle workload  or understand feature migration parity, try the new extension. For detailed code assessment and conversion, continue with SSMA for Oracle.
 
 
 ## Prerequisites

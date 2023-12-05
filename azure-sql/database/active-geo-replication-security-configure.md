@@ -1,8 +1,8 @@
 ---
 title: Configure security for disaster recovery
 description: Learn the security considerations for configuring and managing security after a database restore or a failover to a secondary server.
-author: AbdullahMSFT
-ms.author: amamun
+author: rajeshsetlem
+ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma, vanto
 ms.date: 12/18/2018
 ms.service: sql-database
@@ -26,7 +26,7 @@ The main trade-off is that managing the disaster recovery process at scale is mo
 If you are using logins and users (rather than contained users), you must take extra steps to ensure that the same logins exist in the `master` database. The following sections outline the steps involved and additional considerations.
 
   >[!NOTE]
-  > It is also possible to use Azure Active Directory (AAD) logins to manage your databases. For more information, see [Azure SQL logins and users](./logins-create-manage.md).
+  > It's also possible to use logins created from Microsoft Entra ID ([formerly Azure Active Directory](/azure/active-directory/fundamentals/new-name)) to manage your databases. For more information, see [Azure SQL logins and users](./logins-create-manage.md).
 
 ### Set up user access to a secondary or recovered database
 

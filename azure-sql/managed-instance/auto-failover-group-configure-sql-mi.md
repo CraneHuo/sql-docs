@@ -1,21 +1,21 @@
 ---
 title: Configure an auto-failover group
 description: Learn how to configure an auto-failover group for Azure SQL Managed Instance by using the Azure portal, and Azure PowerShell.
-author: MladjoA
-ms.author: mlandzic
+author: Stralle
+ms.author: strrodic
 ms.reviewer: mathoma
 ms.date: 07/09/2022
 ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.topic: how-to
-ms.custom: devx-track-azurecli, azure-sql-split, devx-track-azurepowershell
+ms.custom: azure-sql-split, devx-track-azurepowershell
 ---
 # Configure an auto-failover group for Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure SQL Database](../database/auto-failover-group-configure-sql-db.md)
-> * [Azure SQL Managed Instance](auto-failover-group-configure-sql-mi.md)
+> * [Azure SQL Database](../database/auto-failover-group-configure-sql-db.md?view=azuresql-db&preserve-view=true)
+> * [Azure SQL Managed Instance](auto-failover-group-configure-sql-mi.md?view=azuresql-mi&preserve-view=true)
 
 This article teaches you how to configure an [auto-failover group](auto-failover-group-sql-mi.md) for Azure SQL Managed Instance using the Azure portal and Azure PowerShell. For an end-to-end experience, review the [Auto-failover group tutorial](failover-group-add-instance-tutorial.md). 
 
@@ -237,7 +237,7 @@ The listener endpoint is in the form of `fog-name.database.windows.net`, and is 
 
 ## <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a> Create group between instances in different subscriptions
 
-You can create a failover group between SQL Managed Instances in two different subscriptions, as long as subscriptions are associated to the same [Azure Active Directory Tenant](/azure/active-directory/fundamentals/active-directory-whatis#terminology). 
+You can create a failover group between SQL Managed Instances in two different subscriptions, as long as subscriptions are associated to the same [Microsoft Entra tenant](/azure/active-directory/fundamentals/active-directory-whatis#terminology). 
 
 - When using PowerShell API, you can do it by specifying the `PartnerSubscriptionId` parameter for the secondary SQL Managed Instance. 
 - When using REST API, each instance ID included in the `properties.managedInstancePairs` parameter can have its own Subscription ID.
@@ -306,7 +306,7 @@ Instances in a failover group remain separate Azure resources, and no changes ma
 This section is duplicated in /managed-instance/auto-failover-group-sql-mi.md.. Please ensure changes are made to both documents. 
 -->
 
-You can scale up or scale down the primary and secondary instance to a different compute size within the same service tier. When scaling up, we recommend that you scale up the geo-secondary first, and then scale up the primary. When scaling down, reverse the order: scale down the primary first, and then scale down the secondary. When you scale instance to a different service tier, this recommendation is enforced.
+You can scale up or scale down the primary and secondary instance to a different compute size within the same service tier or to a different service tier. When scaling up within the same service tier, we recommend that you scale up the geo-secondary first, and then scale up the primary. When scaling down within the same service tier, reverse the order: scale down the primary first, and then scale down the secondary. When you scale instance to a different service tier, this recommendation is enforced.
 
 The sequence is recommended specifically to avoid the problem where the geo-secondary at a lower SKU gets overloaded and must be re-seeded during an upgrade or downgrade process.
 

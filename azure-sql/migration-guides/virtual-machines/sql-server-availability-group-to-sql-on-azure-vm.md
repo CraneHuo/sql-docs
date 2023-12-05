@@ -9,6 +9,8 @@ ms.date: 10/27/2022
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
 ms.topic: how-to
+ms.custom:
+  - sql-migration-content
 ---
 # Migrate an availability group to SQL Server on Azure VM
 
@@ -40,7 +42,7 @@ Prepare Azure for migration with the [Server Migration tool](/azure/migrate/migr
 | **Task** | **Details** |
 |--- | --- |
 | **Create an Azure Migrate project** | Your Azure account needs Contributor or Owner permissions to [create a new project](/azure/migrate/create-manage-projects). |
-| **Verify permissions for your Azure account** | Your Azure account needs Contributor or Owner permissions on the Azure subscription, permissions to register Azure Active Directory (Azure AD) apps, and User Access Administrator permissions on the Azure subscription to create a Key Vault, to create a VM, and to write to an Azure managed disk. |
+| **Verify permissions for your Azure account** | Your Azure account needs Contributor or Owner permissions on the Azure subscription, permissions to register apps in Microsoft Entra ID ([formerly Azure Active Directory](/azure/active-directory/fundamentals/new-name)), and User Access Administrator permissions on the Azure subscription to create a Key Vault, to create a VM, and to write to an Azure managed disk. |
 | **Set up an Azure virtual network** | [Setup](/azure/virtual-network/virtual-networks-overview) an Azure virtual network (VNet). When you replicate to Azure, Azure VMs are created and joined to the Azure VNet that you specify when you set up migration. |
 
 To check you have proper permissions, follow these steps:
@@ -191,7 +193,7 @@ To create the load balancer, follow these steps:
 | LoadBalancerName | Mandatory|Specify the name of the load balancer to be created. |
 
 ```powershell
-./Create-ClusterLoadBalancer.ps1 -ConfigFilePath ./clsuterinfo.csv -ResourceGroupName $resoucegroupname -VNetName $vnetname -subnetName $subnetname -VnetResourceGroupName $vnetresourcegroupname -Location "eastus" -LoadBalancerName $loadbalancername
+./Create-ClusterLoadBalancer.ps1 -ConfigFilePath ./cluster-config.csv -ResourceGroupName $resoucegroupname -VNetName $vnetname -subnetName $subnetname -VnetResourceGroupName $vnetresourcegroupname -Location "eastus" -LoadBalancerName $loadbalancername
 ```
 
 ## Replicate machines
@@ -300,7 +302,7 @@ After your VMs have migrated, reconfigure the cluster. Follow these steps:
 
 1. Start the migrated servers in Azure and sign in to any node.
 
-1. Copy the `ClusterConfig.csv` file and run the `Update-ClusterConfig.ps1` script passing the CSV as a parameter. This ensures the cluster resources are updated with the new configuration for the cluster to work in Azure.
+1. Copy the `Cluster-Config.csv` file and run the `Update-ClusterConfig.ps1` script passing the CSV as a parameter. This ensures the cluster resources are updated with the new configuration for the cluster to work in Azure.
 
    ```powershell
    ./Update-ClusterConfig.ps1 -ConfigFilePath $filepath

@@ -186,7 +186,7 @@
       items:
       - name: Authentication
         href: ../connect/ado-net/sql/authentication-sql-server.md
-      - name: Azure Active Directory authentication
+      - name: Microsoft Entra authentication
         href: ../connect/ado-net/sql/azure-active-directory-authentication.md
       - name: Application security scenarios
         href: ../connect/ado-net/sql/application-security-scenarios-sql-server.md
@@ -299,6 +299,13 @@
           href: ado-net/sql/azure-key-vault-enclave-example.md
       - name: Data Discovery and Classification in SqlClient
         href: ../connect/ado-net/sql/data-classification.md
+
+
+
+- name: Go
+  items:
+  - name: Microsoft Golang driver for SQL Server
+    href: ../connect/golang/microsoft-go-mssqldb-driver.md
 
 
 
@@ -2700,6 +2707,8 @@
   - name: Improving performance and reliability
     href: ../connect/jdbc/improving-performance-and-reliability-with-the-jdbc-driver.md
     items:
+    - name: Understanding timeout properties
+      href: ../connect/jdbc/understand-timeouts.md
     - name: Closing objects when not in use
       href: ../connect/jdbc/closing-objects-when-not-in-use.md
     - name: Managing transaction size
@@ -2815,7 +2824,7 @@
           items:
           - name: Using Kerberos integrated authentication
             href: ../connect/jdbc/using-kerberos-integrated-authentication-to-connect-to-sql-server.md
-          - name: Using Azure Active Directory authentication
+          - name: Using Microsoft Entra authentication
             href: ../connect/jdbc/connecting-using-azure-active-directory-authentication.md
           - name: Using NTLM authentication
             href: ../connect/jdbc/using-ntlm-authentication-to-connect-to-sql-server.md
@@ -3023,13 +3032,15 @@
     items:
     - name: Connection resiliency
       href: ../connect/odbc/connection-resiliency.md
+    - name: Connection encryption troubleshooting
+      href: ../connect/odbc/connection-troubleshooting.md
     - name: Custom Keystore Providers
       href: ../connect/odbc/custom-keystore-providers.md
     - name: DSN and Connection String Keywords and Attributes
       href: ../connect/odbc/dsn-connection-string-attribute.md
     - name: Using Always Encrypted
       href: ../connect/odbc/using-always-encrypted-with-the-odbc-driver.md
-    - name: Using Azure Active Directory
+    - name: Using Microsoft Entra ID
       href: ../connect/odbc/using-azure-active-directory.md
     - name: Using Transparent Network IP Resolution
       href: ../connect/odbc/using-transparent-network-ip-resolution.md
@@ -5299,7 +5310,7 @@
       href: ../connect/oledb/features/oledb-driver-for-sql-server-support-for-localdb.md
     - name: Table-Valued Parameters (OLE DB Driver for SQL Server)
       href: ../connect/oledb/features/table-valued-parameters-oledb-driver-for-sql-server.md
-    - name: Using Azure Active Directory
+    - name: Using Microsoft Entra ID
       href: ../connect/oledb/features/using-azure-active-directory.md
     - name: Using Data Classification
       href: ../connect/oledb/features/using-data-classification.md
@@ -5595,7 +5606,7 @@
             href: ../connect/oledb/ole-db-how-to/results/execute-stored-procedure-with-rpc-and-process-output.md
           - name: Fetch Rows from a Result Set
             href: ../connect/oledb/ole-db-how-to/results/fetch-rows-from-a-result-set-ole-db.md
-        - name: Filestream
+        - name: FILESTREAM
           href: ../connect/oledb/ole-db-how-to/filestream/filestream-and-ole-db.md
           items:
           - name: Read a FILESTREAM Column to File Using IBCPSession
@@ -5707,7 +5718,7 @@
         href: ../connect/php/how-to-connect-using-windows-authentication.md
       - name: "How to: Connect Using SQL Server Authentication"
         href: ../connect/php/how-to-connect-using-sql-server-authentication.md
-      - name: "How to: Connect Using Azure Active Directory Authentication"
+      - name: "How to: Connect Using Microsoft Entra authentication"
         href: ../connect/php/azure-active-directory.md
       - name: "How to: Connect on a Specified Port"
         href: ../connect/php/how-to-connect-on-a-specified-port.md

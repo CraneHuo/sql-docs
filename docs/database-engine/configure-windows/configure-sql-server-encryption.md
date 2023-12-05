@@ -24,7 +24,7 @@ To configure [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] to us
 
 Depending on the version of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Configuration Manager you have access to on the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] computer, use one of the following procedures to install and configure the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance.
 
-### Computers that have SQL Server 2019 Configuration Manager
+### Computers with SQL Server Configuration Manager for SQL Server 2019 and later versions
 
 Starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], certificate management is integrated into [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Configuration Manager, and can be used with earlier versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. To add a certificate on a single [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance, in a failover cluster configuration, or in an availability group configuration, see [Certificate Management (SQL Server Configuration Manager)](manage-certificates.md). The Configuration Manager greatly simplifies certificate management by taking care of installing the certificate and configuring [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] for using the installed certificate with just a few steps.
 
@@ -32,7 +32,7 @@ Certificates are stored locally for the users on the computer. To install a cert
 
 You can temporarily install an Express edition of [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] or a later version to use [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Configuration Manager, which supports integrated certificate management.
 
-### Computers that don't have SQL Server 2019 Configuration Manager
+### Computers with SQL Server Configuration Manager for SQL Server 2017 and earlier
 
 If you are using [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] or an earlier version, and [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Configuration Manager for [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] isn't available, follow these steps to install and configure the certificate on the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] computer:
 
@@ -64,11 +64,11 @@ This key contains a property of the certificate known as a thumbprint, which ide
 
 1. Navigate to the certificate store where the FQDN certificate is stored. On the properties page for the certificate, go to the **Details** tab and copy the thumbprint value of the certificate to a **Notepad** window.
 1. Remove the spaces between the hex characters in the thumbprint value in **Notepad**.
-1. Start **Registry Editor**, navigate to the following registry key, and copy the value from Step 2:
+1. Start **Registry Editor**, navigate to the following registry key, and paste the value from Step 2:
 
    `HKLM\SOFTWARE\Microsoft\Microsoft SQL Server\<instance>\MSSQLServer\SuperSocketNetLib\Certificate`
 
-1. If the SQL virtual server is currently on this node, fail over to another node in your cluster and reboot the node where the registry change occurred.
+1. If the SQL virtual server is currently on this node, fail over to another node in your cluster and restart the node where the registry change occurred.
 1. Repeat this procedure on all the nodes.
 
 > [!WARNING]  
@@ -140,3 +140,5 @@ SELECT DISTINCT (encrypt_option)
 FROM sys.dm_exec_connections;
 GO
 ```
+
+The `encrypt_option` column is a Boolean value indicating whether encryption is enabled for this connection. If the value is `TRUE`, the connection is securely encrypted. If the value is `FALSE`, the connection isn't encrypted.

@@ -43,6 +43,7 @@ For more information and tutorials on creating various external data sources, se
 - [CSV](virtualize-csv.md)
 - [Delta table](virtualize-delta.md)
 
+
 ## Prerequisites  
 
 To get started, install PolyBase on your SQL Server in [Windows](polybase-installation.md) or [Linux](polybase-linux-setup.md), then see [PolyBase configuration](polybase-configuration.md).
@@ -261,7 +262,7 @@ Create a database master key on the database if one does not already exist. This
 CREATE MASTER KEY;
 ```
 
-Then, create a database scoped credential. `IDENTITY` is both the client ID and OAuth 2.0 Token Endpoint token from your Azure Active Directory Application, separated by a `@`. `SECRET` is the Azure AD Application Service Principal key. For more information, see [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](../../t-sql/statements/create-database-scoped-credential-transact-sql.md).
+Then, create a database scoped credential. `IDENTITY` is the client ID and OAuth 2.0 Token Endpoint from your Microsoft Entra application, separated by a `@`. `SECRET` is the Microsoft Entra application service principal key. For more information, see [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](../../t-sql/statements/create-database-scoped-credential-transact-sql.md).
 
 
 ```sql
@@ -387,7 +388,7 @@ Then, create a database scoped credential. `IDENTITY` is the user name to authen
 
 Create the external data source to the other SQL Server. 
 
-- LOCATION should be `<vendor>://<server>[:<port>]`, in this case, `sqlserver://servername` or `sqlserver://servername\instance` or `sqlserver://servername:port`. For [!INCLUDE[ssSDSfull](../../includes/sssdsfull-md.md)], use the fully qualified domain name (FQDN) such as `sqlserver://servername.database.windows.net`. Be aware that options for `LOCATION` prefixes vary in different versions of SQL Server and platforms in Azure SQL, always refer to [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](../../t-sql/statements/create-external-data-source-transact-sql.md).
+- LOCATION should be `<vendor>://<server>[:<port>]`, in this case, `sqlserver://servername` or `sqlserver://servername\instance` or `sqlserver://servername:port`. For [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], use the fully qualified domain name (FQDN) such as `sqlserver://servername.database.windows.net`. Be aware that options for `LOCATION` prefixes vary in different versions of SQL Server and platforms in Azure SQL, always refer to [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](../../t-sql/statements/create-external-data-source-transact-sql.md).
 - PUSHDOWN is ON by default for PolyBase in [!INCLUDE[sssql19-md](../../includes/sssql19-md.md)] and later. Specify whether computation should be pushed down to the source.
 - CREDENTIAL is the database scoped credential name created in the previous step.
 

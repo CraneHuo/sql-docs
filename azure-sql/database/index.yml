@@ -12,7 +12,7 @@ metadata:
   ms.topic: landing-page
   author: MashaMSFT
   ms.author: mathoma
-  ms.reviewer: kendralittle, mathoma
+  ms.reviewer: mathoma
   ms.date: 01/25/2021
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
@@ -71,6 +71,14 @@ landingContent:
         - text: Educational SQL resources
           url: /sql/sql-server/educational-sql-resources
 
+  # Card
+  - title: Artificial Intelligence
+    linkLists:
+      - linkListType: concept
+        links:
+        - text: Intelligent Applications
+          url: ai-artificial-intelligence-intelligent-applications.md
+
   # Card 
   - title: Advanced security
     linkLists:
@@ -82,7 +90,7 @@ landingContent:
             url: security-best-practice.md
           - text: Logins, user accounts, roles, and permissions
             url: logins-create-manage.md
-          - text: Azure Active Directory
+          - text: Microsoft Entra ID (formerly Azure Active Directory)
             url: authentication-aad-overview.md
           - text: Auditing
             url: auditing-overview.md 
@@ -125,7 +133,6 @@ landingContent:
           - text: Long-term backup retention  
             url: long-term-retention-overview.md
 
-
   # Card 
   - title: Reference 
     linkLists:
@@ -142,7 +149,7 @@ landingContent:
         - text: SQL Server Management Studio (SSMS)
           url: /sql/ssms/download-sql-server-management-studio-ssms
         - text: Azure Data Studio 
-          url: /sql/azure-data-studio/download-azure-data-studio
+          url: /azure-data-studio/download-azure-data-studio
         - text: SQL Server Data Tools 
           url: /sql/ssdt/download-sql-server-data-tools-ssdt
         - text: Visual Studio 2019
@@ -198,7 +205,6 @@ landingContent:
           - text: Design first database (C#)
             url: design-first-database-csharp-tutorial.md
 
-
   # Card 
   - title: Planned maintenance
     linkLists:
@@ -217,5 +223,3 @@ landingContent:
             url: maintenance-window-configure.md
           - text: Maintenance window notifications
             url: advance-notifications.md
-
-

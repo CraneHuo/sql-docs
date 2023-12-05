@@ -3,7 +3,7 @@ title: Getting started with temporal tables
 description: Learn how to get started with using temporal tables in Azure SQL Database and Azure SQL Managed Instance.
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: mathoma, kendralittle
+ms.reviewer: mathoma
 ms.date: 10/18/2021
 ms.service: sql-db-mi
 ms.subservice: performance
@@ -28,7 +28,7 @@ Fortunately, you do not need to put any effort in your app to maintain this acti
 
 ## Step 1: Configure tables as temporal
 
-Depending on whether you are starting new development or upgrading existing application, you will either create temporal tables or modify existing ones by adding temporal attributes. In general case, your scenario can be a mix of these two options. Perform these action using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) (SSDT), [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio),  or any other Transact-SQL development tool.
+Depending on whether you are starting new development or upgrading existing application, you will either create temporal tables or modify existing ones by adding temporal attributes. In general case, your scenario can be a mix of these two options. Perform these action using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) (SSDT), [Azure Data Studio](/azure-data-studio/download-azure-data-studio),  or any other Transact-SQL development tool.
 
 > [!IMPORTANT]
 > It is recommended that you always use the latest version of Management Studio to remain synchronized with updates to Azure SQL Database and Azure SQL Managed Instance. [Update SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).

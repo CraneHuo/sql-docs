@@ -5,7 +5,7 @@ description: Azure SQL provides the ability to use the capacity of read-only rep
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 05/09/2023
+ms.date: 11/28/2023
 ms.service: sql-database
 ms.subservice: scale-out
 ms.topic: conceptual
@@ -49,7 +49,7 @@ Typical data propagation latency between the primary replica and read-only repli
 > [!NOTE]  
 > Data propagation latency includes the time required to send and persist (if applicable) log records to a secondary replica. It also includes the time required to redo (apply) these log records to data pages. To ensure data consistency, changes are not visible until the transaction commit log record is applied. When the workload uses larger transactions, effective data propagation latency is increased.
 > 
-> To monitor data propagation latency, see [Monitoring and troubleshooting read-only replica](#monitor-and-troubleshooting-read-only-replicas).
+> To monitor data propagation latency, see [Monitor and troubleshoot read-only replica](#monitor-and-troubleshoot-read-only-replicas).
 
 ## Connect to a read-only replica
 
@@ -88,7 +88,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 > [!NOTE]  
 > In Premium and Business Critical service tiers, only one of the read-only replicas is accessible at any given time. Hyperscale supports multiple read-only replicas.
 
-## Monitor and troubleshooting read-only replicas
+## Monitor and troubleshoot read-only replicas
 
 When connected to a read-only replica, Dynamic Management Views (DMVs) reflect the state of the replica, and can be queried for monitoring and troubleshooting purposes. The database engine provides multiple views to expose a wide variety of monitoring data.
 
@@ -114,7 +114,14 @@ The following views are commonly used for replica monitoring and troubleshooting
 
 An extended event session can't be created when connected to a read-only replica. However, in Azure SQL Database, the definitions of database-scoped [Extended Event](xevent-db-diff-from-svr.md) sessions created and altered on the primary replica replicate to read-only replicas, including geo-replicas, and capture events on read-only replicas.
 
-An extended event session on a read-only replica that is based on a session definition from the primary replica can be started and stopped independently of the primary replica. When an extended event session is dropped on the primary replica, it is also dropped on all read-only replicas.
+An extended event session on a read-only replica that is based on a session definition from the primary replica can be started and stopped independently of the session on the primary replica.
+
+To drop an event session on a read-only replica, follow these steps:
+
+1. [Connect](#connect-to-a-read-only-replica) SSMS Object Explorer or a query window to the read-only replica.
+1. Stop the session on the read-only replica, either by selecting **Stop Session** on the session context menu in Object Explorer, or by executing `ALTER EVENT SESSION [session-name-here] ON DATABASE STATE = STOP;` in a query window. 
+1. Connect Object Explorer or a query window to the primary replica.
+1. Drop the session on the primary replica, either by selecting **Delete** on the session context menu, or by executing `DROP EVENT SESSION [session-name-here] ON DATABASE;`
 
 ### Transaction isolation level on read-only replicas
 
@@ -191,7 +198,7 @@ Body: {
 }
 ```
 
-For more information, see [Databases - Create or update](/rest/api/sql/databases/createorupdate).
+For more information, see [Databases - Create or update](/rest/api/sql/2022-08-01-preview/databases/create-or-update).
 
 ## Use the `tempdb` database on a read-only replica
 

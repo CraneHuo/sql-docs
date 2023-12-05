@@ -64,7 +64,7 @@ The following table describes the resulting encryption and validation:
 > The preceding table only provides a guide on the system behavior under different configurations. For secure connectivity, ensure that the client and server both require encryption (for server-side configuration, see [Configure encryption settings in SQL Server](../../../database-engine/configure-windows/configure-sql-server-encryption.md#step-2-configure-encryption-settings-in-sql-server)). Also ensure that the server has a verifiable certificate, and that the **`TrustServerCertificate`** setting on the client is set to FALSE.
 
 > [!NOTE]
-> Starting from version 19.2 of the OLE DB driver, TDS 8.0 connections can be configured to use TLS 1.3. For more information, see [TLS 1.3 support](../../../relational-databases/security/networking/tds-8-and-tls-1-3.md).
+> Starting from version 19.2 of the OLE DB driver, TDS 8.0 connections can be configured to use TLS 1.3. For more information, see [TLS 1.3 support](../../../relational-databases/security/networking/tls-1-3.md).
 
 ### Major version 18 with new authentication methods
 
@@ -116,7 +116,7 @@ The following table describes the encryption and validation outcome for legacy a
 
 ## See also
 
-[OLE DB driver for SQL server features](oledb-driver-for-sql-server-features.md)  
+[OLE DB Driver for SQL Server Features](oledb-driver-for-sql-server-features.md)  
 [Initialization and authorization properties](../ole-db-data-source-objects/initialization-and-authorization-properties.md)  
 [Connection string keywords](../applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md)  
 [Major version differences](../major-version-differences.md)  

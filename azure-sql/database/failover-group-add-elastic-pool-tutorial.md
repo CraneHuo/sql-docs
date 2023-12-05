@@ -1,8 +1,8 @@
 ---
 title: "Tutorial: Add an elastic pool to a failover group"
 description: Add an Azure SQL Database elastic pool to a failover group using the Azure portal, PowerShell, or Azure CLI.
-author: AbdullahMSFT
-ms.author: amamun
+author: rajeshsetlem
+ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma
 ms.date: 01/26/2022
 ms.service: sql-database
@@ -16,9 +16,9 @@ ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 
 > [!div class="op_single_selector"]
 >
-> - [Azure SQL Database (single database)](failover-group-add-single-database-tutorial.md)
-> - [Azure SQL Database (elastic pool)](failover-group-add-elastic-pool-tutorial.md)
-> - [Azure SQL Managed Instance](../managed-instance/failover-group-add-instance-tutorial.md)
+> - [Azure SQL Database (single database)](failover-group-add-single-database-tutorial.md?view=azuresql-db&preserve-view=true)
+> - [Azure SQL Database (elastic pool)](failover-group-add-elastic-pool-tutorial.md?view=azuresql-db&preserve-view=true)
+> - [Azure SQL Managed Instance](../managed-instance/failover-group-add-instance-tutorial.md?view=azuresql-mi&preserve-view=true)
 
 Configure an [auto-failover group](auto-failover-group-sql-db.md) for an Azure SQL Database elastic pool and test failover using the Azure portal.
 
@@ -196,7 +196,7 @@ Create your failover group using the Azure portal.
     - **Secondary server**: Select the option to *configure required settings* and then choose to **Create a new server**. Alternatively, you can choose an already-existing server as the secondary server. After entering the following values for your new secondary server, select **Select**.
         - **Server name**: Type in a unique name for the secondary server, such as `mysqlsecondary`.
         - **Server admin login**: Type `azureuser`
-        - **Password**: Type a complex password that meets password requirements.
+        - **Password**: Type the same password as your primary server, and type it again in the **Confirm password** field.
         - **Location**: Choose a location from the drop-down, such as `East US`. This location can't be the same location as your primary server.
 
        > [!NOTE]

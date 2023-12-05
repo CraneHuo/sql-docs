@@ -8,6 +8,8 @@ ms.date: 03/17/2023
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
+ms.custom:
+  - linux-related-content
 ---
 # Configure the time zone for SQL Server 2022 on Linux
 
@@ -351,7 +353,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Atlantic/Azores | Azores Standard Time |
 | Atlantic/Bermuda | Atlantic Standard Time |
 | Atlantic/Canary | GMT Standard Time |
-| Atlantic/Cape_Verde | Cape Verde Standard Time |
+| Atlantic/Cape_Verde | Cabo Verde Standard Time |
 | Atlantic/Faeroe | GMT Standard Time |
 | Atlantic/Faroe | GMT Standard Time |
 | Atlantic/Madeira | GMT Standard Time |
@@ -374,7 +376,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | CST6CDT | Central Standard Time |
 | EST5EDT | Eastern Standard Time |
 | Etc/GMT | UTC |
-| Etc/GMT+1 | Cape Verde Standard Time |
+| Etc/GMT+1 | Cabo Verde Standard Time |
 | Etc/GMT+10 | Hawaiian Standard Time |
 | Etc/GMT+11 | UTC-11 |
 | Etc/GMT+12 | Dateline Standard Time |
@@ -419,7 +421,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Europe/Guernsey | GMT Standard Time |
 | Europe/Helsinki | FLE Standard Time |
 | Europe/Isle_of_Man | GMT Standard Time |
-| Europe/Istanbul | Turkey Standard Time |
+| Europe/Istanbul | Türkiye Standard Time |
 | Europe/Jersey | GMT Standard Time |
 | Europe/Kaliningrad | Kaliningrad Standard Time |
 | Europe/Kyiv | FLE Standard Time |
@@ -818,7 +820,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Atlantic/Azores | Azores Standard Time |
 | Atlantic/Bermuda | Atlantic Standard Time |
 | Atlantic/Canary | GMT Standard Time |
-| Atlantic/Cabo_Verde | Cabo Verde Standard Time |
+| Atlantic/Cape_Verde | Cabo Verde Standard Time |
 | Atlantic/Faeroe | GMT Standard Time |
 | Atlantic/Madeira | GMT Standard Time |
 | Atlantic/Reykjavik | Greenwich Standard Time |
@@ -885,7 +887,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Europe/Guernsey | GMT Standard Time |
 | Europe/Helsinki | FLE Standard Time |
 | Europe/Isle_of_Man | GMT Standard Time |
-| Europe/Istanbul | Turkey Standard Time |
+| Europe/Istanbul | Türkiye Standard Time |
 | Europe/Jersey | GMT Standard Time |
 | Europe/Kaliningrad | Kaliningrad Standard Time |
 | Europe/Kyiv | FLE Standard Time |
@@ -980,7 +982,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Pacific/Wake | UTC+12 |
 | Pacific/Wallis | UTC+12 |
 
-## Next steps
+## Related content
 
 - [SQL Server on Linux](sql-server-linux-overview.md)
 - [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md)

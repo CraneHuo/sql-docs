@@ -2,8 +2,8 @@
 title: "Quickstart: Restore a backup (SSMS)"
 titleSuffix: Azure SQL Managed Instance
 description: In this quickstart, learn how to restore a database backup to Azure SQL Managed Instance by using SQL Server Management Studio (SSMS).
-author: strahinjas 
-ms.author: sstefanovic
+author: Stralle
+ms.author: strrodic
 ms.reviewer: mathoma, nvraparl
 ms.date: 09/13/2021
 ms.service: sql-managed-instance
@@ -27,7 +27,7 @@ The quickstart restores the Wide World Importers database from a backup file. Yo
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> - For more information on migration using Azure Database Migration Service, see [Tutorial: Migrate SQL Server to an Azure Managed Instance using Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance).
+> - For more information on migration using Azure Database Migration Service, see [Tutorial: Migrate SQL Server to an Azure SQL Managed Instance using Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance).
 > - For more information on various migration methods, see [SQL Server to Azure SQL Managed Instance Guide](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
 
 ## Prerequisites
@@ -146,7 +146,7 @@ As an alternative to the restore wizard, you can use T-SQL statements to restore
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
    WITH IDENTITY = 'SHARED ACCESS SIGNATURE'
-   , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
+   , SECRET = 'sv=...'
    ```
 
    :::image type="content" source="./media/restore-sample-database-quickstart/credential.png" alt-text="Screenshot that shows the SSMS Query Editor. The CREATE CREDENTIAL statement is visible, and a message indicates that the query ran successfully.":::

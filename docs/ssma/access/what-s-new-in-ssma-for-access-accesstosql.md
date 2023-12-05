@@ -3,15 +3,27 @@ title: "What's New in SSMA for Access (AccessToSQL)"
 description: Find out about changes to SQL Server Migration Assistant (SSMA) for Access (AccessToSQL) for each release.
 author: cpichuka
 ms.author: cpichuka
-ms.date: "04/29/2021"
+ms.date: 11/30/2023
 ms.service: sql
 ms.subservice: ssma
 ms.topic: conceptual
-ms.custom: intro-whats-new
+ms.custom:
+  - intro-whats-new
+  - sql-migration-content
 ---
 # What's New in SSMA for Access (AccessToSQL)
 
 This article lists SQL Server Migration Assistant (SSMA) for Access changes in each release.
+
+## SSMA v9.5 
+
+The v9.5 release of SSMA for Access contains the following changes:
+
+* Support for exclude schema in SSMA console mode.
+  
+## SSMA v9.4
+
+The v9.4 release of SSMA for Access contains minor performance improvements, bug fixes, and an enhanced help experience.
 
 ## SSMA v9.3
 
@@ -167,7 +179,7 @@ To leverage this setting, in SSMA for Access, navigate to **Tools** > **Project 
 
 ## SSMA v8.5
 
-The v8.5 release of SSMA for Access is enhanced with support for Azure Active Directory authentication and basic support for JSON features in SQL server, together with a targeted set of fixes designed to improve usability and performance.
+The v8.5 release of SSMA for Access is enhanced with support for Azure Active Directory authentication and basic support for JSON features in SQL Server, together with a targeted set of fixes designed to improve usability and performance.
 
 In addition, SSMA for Access now supports conversion of multiple standard functions (`ISNULL`, `IIF`, etc.).
 
